@@ -1,0 +1,108 @@
+<DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ABOUT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    
+  </head>
+
+  <body class="Body">
+    <nav>
+      <ul>
+        <li><a href="#" class="left">EPIC_Mail</a></li>
+        <li><a href="signup.html" class="right">Home</a></li>
+        <li><a href="login.html" class="right">Login</a></li>
+        <!-- <li><a href="veiw_record.html" class="right">Veiw Report</a></li> -->
+        <li><a href="admin.html" class="right">Admin</a></li>
+      </ul>
+    </nav>
+    <div class="maincontainer">
+      <div id="admin">
+        <div class="button1">
+          <button onclick="AddUsers()">Add Users</button>
+          <button onclick="CreateGroups()">Create Groups</button>
+        </div>
+
+        <form class="container" id="AddUsers">
+          <div>
+            <h1>Add Users</h1>
+            <!-- <p>Take action it starts now.</p> -->
+            <hr>
+
+            <label><b>Username:</b></label>
+            <input type="text" placeholder=" Enter their Username" required>
+            <br>
+
+            <label><b>User Email:</b></label>
+            <input type="text" placeholder="Enter the user Email" required>
+            <br>
+
+            <label><b>User Location:</b></label>
+            <input type="text" placeholder="Enter the user Location" required>
+            <br>
+
+            <label><b>User Phone Number:</b></label>
+            <input type="text" placeholder="Enter the user Phone number" required>
+            <br>
+
+            <!-- <br>
+          <button type="submit" class="signup">upload files</button>
+          <br> -->
+            <br>
+            <button type="submit" class="signup">Submit</button>
+            <br>
+
+          </div>
+
+        </form>
+
+
+        <form class="container" id="CreateGroups">
+          <div>
+            <h1>Create Groups</h1>
+            <!-- <p>Take action it starts now.</p> -->
+            <hr>
+
+            <label><b>Group Name:</b></label>
+            <input type="text" placeholder=" Enter a group name" required>
+            <br>
+
+            <label><b> Names of the people in the group:</b></label>
+            <input type="text" placeholder="Enter your story description" required>
+            <br>
+
+            <label><b>Their Phone Number:</b></label>
+            <input type="text" placeholder=" Enter a Phone number" required>
+            <br>
+
+            <label><b> Their Location:</b></label>
+            <input type="text" placeholder="Enter your a Location" required>
+            <br>
+
+            <br>
+            <!-- <button type="submit" class="signup">upload files</button> -->
+            <br>
+
+            <br>
+            <button type="submit" class="signup">Submit</button>
+            <br>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <p>Desgined by Jenny Zawal</p>
+      </div>
+    </footer>
+  </body>
+
+  </html>
