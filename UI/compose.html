@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
   <link rel="stylesheet" type="text/css" media="screen" href="css/users.css" />
   <title>Document</title>
 </head>
-
 <body>
   <nav>
     <ul>
@@ -30,45 +28,24 @@
     </div>
   </aside>
   <table>
-    <caption>Inbox Messages</caption>
-    <th>Receiver</th>
-    <th>Title</th>
-    <th>Message</th>
-    <th>Date</th>
-    </tr>
+    <caption>Send a Message</caption>
     <tr>
-      <td>zawal@gmail.com</td>
-      <td>Hackthons</td>
-      <td><span id="message">There will be an hackthon</span></td>
-      <td>23. thr. 2019</td>
-    </tr>
-    <tr>
-      <td>jenny@gmail.com</td>
-      <td>Meeting</td>
-      <td><span id="message2">There will be a meeting</span></td>
-      <td>24. fri. 2019</td>
+      <td>
+        <div class="compose_form">
+          <form class="modal_elements">
+            <input type="text" name="title" placeholder="Enter receiver's email" required>
+            <input type="text" name="title" placeholder="Enter subject" required>
+            <input type="text" name="title" placeholder="Message" required>
+            <div id="submit">
+              <input type="submit" value="Send" id="submitBtn">
+              <input type="submit" value="Send as draft" id="submitBtn">
+              <input type="submit" value="Delete" id="submitBtn">
+            </div>
+          </form>
+        </div>
+      </td>
     </tr>
   </table>
-  <div id="DisplayMessage" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Message<span class="closeBtn2">&times;</span></h3>
-      </div>
-      <div class="modal-body">
-        <form class="modal_elements">
-          <p>Received From: jzalwa@gmail.com<p>
-              <p>To: Me</p>
-              <textarea>There will be a meeting</textarea>
-              <div id="submit">
-                <input type="submit" name="reply" value="reply" id="submitBtn">
-              </div>
-        </form>
-      </div>
-      <div>
-      </div>
-    </div>
-  </div>
   <footer>
     <div>
       <p>&copy; Epic Mail 2019</p>
@@ -76,4 +53,5 @@
   </footer>
   <script src="js/myModals.js"></script>
 </body>
+
 </html>

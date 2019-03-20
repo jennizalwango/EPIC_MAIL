@@ -1,50 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+  <title>iReporter</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
-  <title>Epic_mail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
-
-<body class="Body">
-  <!-- <nav>
-    <ul>
-      <li><a href="#" class="left">EPIC_Mail</a></li>
-      <li><a href="index.html" class="right">Home</a></li>
-     
-    </ul>
-  </nav> -->
-  <form class="container">
-    <div id="login_form">
-      <h3>Login</h3>
-      <hr>
-
-      <input type="email" placeholder="Email" required> <br><br>
-     
-      <input type="password" placeholder="Password" required>
-      <br><br>
-      <div id="lower_login">
-        <br>
-        <button><a href="users.html"></a>Login</button>
-
-      <P>Dont have an account? <a href="signup.html">signup </a></P>
-      
-          <p><a href="#">Forgot your password</a></p>
-      
+<body>
+  <div class="header">
+    <h1>EPIC MAIL</h1>
+    <p><i>"Use this web application for fastest communication, <br>
+        reach out to your family and friends
+        from any anywhere the World"</i></p>
+  </div>
+  <!-- The flexible grid (content) -->
+  <div class="row">
+    <div class="main">
+      <div class="form">
+        <div class="head" class="signup">
+          <div onclick="swap(this);" data-tab="login" class="login-tab">
+            LOGIN
+          </div>
+          <div onclick="swap(this);" data-tab="signup" class="signup-tab">
+            SIGNUP
+          </div>
+        </div>
+        <div class="body" id="form-body">
+          <div class="login">
+            <div class="form-row">
+              <input type="email" id="email" placeholder="Email" required>
+              <input type="password" id="password" placeholder="Password" required>
+              <button onclick="loginUser()">LOGIN</button>
+            </div>
+          </div>
+          <div class="signup">
+            <div class="form-row">
+              <input type="text" id="FirstName" placeholder="First Name" required>
+              <input type="text" id="LastName" placeholder="Last Name" required>
+              <input type="email" id="r_email" placeholder="Email" required>
+              <input type="password" id="r_password" placeholder="Password" required>
+              <button onclick="RegisterUser()">SIGNUP</button>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <br>
     </div>
-
-  </form>
-
-  <footer>
-    <div>
-      <p>&copy; Epic Mail 2019</p>
-    </div>
-  </footer>
+  </div>
+  <script src="js/login.js"></script>
 </body>
 </html>
