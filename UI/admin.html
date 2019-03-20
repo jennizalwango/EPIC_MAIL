@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <script src="js/main.js"></script>
-
   </head>
 
-  <body class="Body">
+  <body>
     <nav>
       <ul>
-        <li><a href="#" class="left">EPIC_Mail</a></li>
+        <li><a href="users.html" class="left">EPIC MAIL</a></li>
+        <li><a href="index.html" class="right">Logout</a></li>
         <li><a href="users.html" class="right">Users</a></li>
         <li><a href="admin.html" class="right">Admin</a></li>
       </ul>
@@ -25,73 +25,66 @@
           <button onclick="AddUsers()">Add Users</button>
           <button onclick="CreateGroups()">Create Groups</button>
         </div>
-
         <form class="container" id="AddUsers">
           <div>
             <h1>Add Users</h1>
             <hr>
-
-            <label><b>Username:</b></label>
             <input type="text" placeholder=" Enter their Username" required>
             <br>
-
-            <label><b>User Email:</b></label>
             <input type="text" placeholder="Enter the user Email" required>
             <br>
-
-            <label><b>User Location:</b></label>
             <input type="text" placeholder="Enter the user Location" required>
             <br>
-
-            <label><b>User Phone Number:</b></label>
             <input type="text" placeholder="Enter the user Phone number" required>
             <br>
             <br>
             <button type="submit" class="signup">Submit</button>
             <br>
-
+            <button class="dropdown">
+              <form action="" name="filterfor">
+                <select>
+                  <option value="rejected">Andelans</option>
+                  <option value="resolved">Java Engineers</option>
+                  <option value="investigation">Python Ladies</option>
+                  <option value="restricted">Developers</option>
+                </select>
+              </form>
+            </button>
           </div>
-
         </form>
-
-
         <form class="container" id="CreateGroups">
           <div>
             <h1>Create Groups</h1>
             <hr>
-
-            <label><b>Group Name:</b></label>
             <input type="text" placeholder=" Enter a group name" required>
             <br>
-
-            <label><b> Names of the people in the group:</b></label>
             <input type="text" placeholder="Enter your story description" required>
             <br>
-
-            <label><b>Member's Phone Number:</b></label>
             <input type="text" placeholder=" Enter a Phone number" required>
             <br>
-
-            <label><b> Member's Location:</b></label>
             <input type="text" placeholder="Enter your a Location" required>
             <br>
-
-            
             <br>
             <button type="submit" class="signup">Submit</button>
             <br>
-
+            <button class="dropdown">
+              <form action="" name="filterfor">
+                <select>
+                  <option value="rejected">Andelans</option>
+                  <option value="resolved">Java Engineers</option>
+                  <option value="investigation">Python Ladies</option>
+                  <option value="restricted">Developers</option>
+                </select>
+              </form>
+            </button>
           </div>
-
         </form>
       </div>
     </div>
-
     <footer>
       <div>
-          <p>&copy; Epic Mail 2019</p>
+        <p>&copy; Epic Mail 2019</p>
       </div>
     </footer>
   </body>
-
   </html>
