@@ -4,92 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="css/users.css"/>
+
   <title>Document</title>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#" class="left">EPIC_Mail</a></li>
-      <li><a href="index.html" class="right">Home</a></li>
-      <li><a href="users.html" class="right">Users</a></li>
-      <li><a href="admin.html" class="right">Admin</a></li>
-    </ul>
-  </nav>
-  <aside class="sidebar">
-    <div>
-      <ul class="ul">
-        <li><a href="compose.html">Compose</a></li>
-        <li><a href="users.html">Inbox</a></lii>
-        <li><a href="sent.html">Sent</a></li>
-        <li><a href="Drafts.html">Drafts</a></li>
-      </ul>
-    </div>
-  </aside>
-  <table>
-    <caption>Draft Messages</caption>
-    <tr>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="left">EPIC MAIL</a></li>
+            <li><a href="admin.html" class="right">Admin</a></li>
+            <li><a href="users.html" class="right">Users</a></li>
+        </ul>
+      </nav>
+      <aside class="sidebar">
+          <div>
+            <ul class="ul">
+                <li><a href="compose.html">Compose</a></li>
+                <li><a href="users.html">Inbox</a></lii>
+                <li><a href="sent.html">Sent</a></li>
+                <li><a href="Drafts.html">Drafts</a></li>
+            </ul>
+            </div>
+      </aside>
+      <table>
+          <caption>Draft Messages</caption>  
       <th>Sender</th>
       <th>Title</th>
       <th>Message</th>
       <th>Date</th>
-      <th>Select</th>
+      <th>Action</th>
     </tr>
     <tr>
       <td>zawal@gmail.com</td>
       <td>Hackthons</td>
       <td>There will be an hackthon</td>
       <td>23. thr. 2019</td>
-      <td><button class="thselect">Edit</button>
-        <button class="thselect">View</button>
-        <button class="thselect">Delete</button>
+      <td><button   class="thselect">Edit</button>
+        <button  id ="message" class="thselect">Read</button>
+        <button onclick="mydeleteFunction()" class="thselect">Delete</button>
       </td>
     </tr>
     <tr>
-      <td>jenny@gmail.com</td>
-      <td>Meeting</td>
-      <td>There will be a meeting</td>
-      <td>24. fri. 2019</td>
-      <td><button class="thselect">Edit</button>
-        <button class="thselect">View</button>
-        <button class="thselect">Delete</button>
-      </td>
-    </tr>
-    <tr>
-      <td>winny@gmail.com</td>
-      <td>women in tech program</td>
-      <td>There will be a program</td>
-      <td>22. sat. 2019</td>
-      <td><button class="thselect">Edit</button>
-        <button class="thselect">View</button>
-        <button class="thselect">Delete</button>
-      </td>
-    </tr>
-    <tr>
-      <td>flash@gmail.com</td>
-      <td>swimming class</td>
-      <td>There will be a swimming class</td>
-      <td>24. sun. 2019</td>
-      <td><button class="thselect">Edit</button>
-        <button class="thselect">View</button>
-        <button class="thselect">Delete</button>
-      </td>
-    </tr>
-    <tr>
-      <td>akot@gmail.com</td>
-      <td>deliver work</td>
-      <td>you are required to deliever work</td>
-      <td>25. mon. 2019</td>
-      <td><button class="thselect">Edit</button>
-        <button class="thselect">View</button>
-        <button class="thselect">Delete</button>
-      </td>
-    </tr>
-  </table>
-  <footer>
-    <div>
-      <p>&copy; Epic Mail 2019</p>
+        <td>jenny@gmail.com</td>
+        <td>Meeting</td>
+        <td>There will be a meeting</td>
+        <td>24. fri. 2019</td>
+        <td><button class="thselect">Edit</button>
+          <button  id ="message2" class="thselect">Read</button>
+          <button onclick="mydeleteFunction()" class="thselect">Delete</button>
+        </td>
+      </tr>
+      
+        </table>
+
+
+  <!-- The Modal for displaying message -->
+  <div id="DisplayMessage" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+              <h3>Message<span class="closeBtn2">&times;</span></h3>
+        </div>
+        <div class="modal-body">
+          <form class="modal_elements">
+            <p>Sent To: jzalwa@gmail.com<p>
+            <p>From: Me</p>
+            <textarea >There will be a meeting</textarea>
+            <div id="submit">
+              <button class="thselect">Send</button>
+            </div>          
+          </form> 
+        </div>
+        <div> 
+        </div>
+      </div>  
     </div>
-  </footer>
+        <footer>
+            <div>
+                <p>&copy; Epic Mail 2019</p>
+            </div>
+          </footer>
+
+          <script src="js/myModals.js"></script>
 </body>
 </html>
