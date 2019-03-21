@@ -76,12 +76,16 @@ function clickOutside(e){
    }
 	
 }
+
 function clickOutside(e){
    if(e.target == modal){
    	modal3.style.display = 'none';
    }
 	
 }
+
 function mydeleteFunction() {
-      confirm("Are you sure you want to delete this incident!");
+      confirm("Are you sure you want to delete this message!");
   }
+
+ 
