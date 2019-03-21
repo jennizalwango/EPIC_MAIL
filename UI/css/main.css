@@ -1,8 +1,6 @@
+
 body{
   font-family: 'Roboto Condensed', sans-serif;
-}
-#adminbody{
-  background-color: #f2f2f2;
 }
 
 li{
@@ -35,6 +33,7 @@ color:#ffffff;
   text-decoration: None;
   color:#ffffff;
   }
+
 .h1{
 color: #ffffff;
 text-align: center;
@@ -64,10 +63,12 @@ margin-bottom:10%;
 .label{
 text-align:left;
 }
+
 .profile{
 display: block;
 background-color:aquamarine;
 color:black;
+
 }
 .anchor{
 float: right;
@@ -81,16 +82,21 @@ grid-template-rows: 40px 60px;
 }
 .paraC{
 font-size: 20px;
+
 }
+
 label{
 margin-left: 15%;
+
 }
 .geo{
 margin-top: 15%;
 }
 
 #lower_login{
+  
 text-align: center;
+
 }
 #lower_login a{
   text-decoration: none;
@@ -106,6 +112,7 @@ table{
   padding:5px;
   font-family: Arial, Helvetica, sans-serif;
   margin-left: 23%;
+
   }
   table tr:nth-child(even){
     background-color: #f2f2f2;
@@ -122,11 +129,11 @@ table{
   table tr td{
     padding-bottom: 25px;
   }
-input[type=text], input[type=password], input[type=email] {
- 
-width: 70%;
+input[type=text], input[type=password], input[type=email]{
+
+width: 80%;
 padding: 12px 20px;
-margin: 8px 10%;
+margin-top: 15px;
 display: inline-block;
 }
 .red{
@@ -147,12 +154,6 @@ position: fixed;
 bottom: 0;
 width: 100%;
 }
-.signup{
-  border-radius: 18px;
-}
-.dropdown{
-  border-radius: 18px;  
-}
 button{
 background-color: #4e6061;
 border: 2px solid;
@@ -161,11 +162,15 @@ display: inline-block;
 font-size: 15px;
 margin: 4px 2px;
 padding: 10px;
+
 }
 .button1 > button{
 border-radius: 18px;
+display:block;
+margin:0 auto;
 }
-.button {text-align: center;
+.signup{
+  border-radius: 18px;
 }
 .style{
 background-color:#86b5b5;
@@ -177,9 +182,9 @@ margin-right:auto;
 width:10%; 
 }
 .maincontainer{
-   background-color:#ffffff;
-   box-shadow: #4e6061;
-
+padding: 15px;
+background-color: aliceblue; 
+margin-top: 0%;
 }
 .subform{
 background-color:#003133;
@@ -191,20 +196,45 @@ height: 50%;
 width: 50%;
 }
 .container{
-background-color: #4e6061;
-width: 40%;
-margin:auto;
+position: relative;
+text-align: center;
+left:50%;
+transform:translate(-50%,-50%);
+width:400px;
+height:400px;
+background-color: #003133;
+margin-top: 19%;
+
 color: #ffffff;
 padding:10px;
 border-radius: 15px;
 }
-#AddUsers{
+.container2{
+  position: relative;
+  
+  text-align: center;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:400px;
+  height:450px;
+  background-color: #003133;
+  margin-top: 18%;
+  
+  color: #ffffff;
+  padding:10px;
+  border-radius: 15px;
+  }
+
+
+#AddUser{
 display: none;
-text-align: center;
+height: 400px;
+widows: 400px;
 }
 #CreateGroups{
 display: none;
-text-align: center;
+height: 400px;
+widows: 400px;
 }
 body {margin: 0;}
 
@@ -241,7 +271,6 @@ caption{
   .modal-content {
      
       width: 80%;
-     
   } 
   
 }

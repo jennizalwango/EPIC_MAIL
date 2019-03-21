@@ -1,101 +1,210 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 /* Style the body */
 body {
-  font-family: Arial;
-  margin: 0;
+    font-family: Arial;
+    margin: 0;
 }
-input[type=text], input[type=number]{
-  height: 44px;
-  font-size: 16px;
-  width: 80%;
-  margin-bottom:10px;
-  background-color: antiquewhite;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  padding: 0 8px;
-  box-sizing:border-box;
-  -moz-box-sizing:border-box;
-}
-textarea {
-  height: 44px;
-  font-size: 16px;
-  width: 80%;
-  margin-bottom:10px;
-  background-color: antiquewhite;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  padding: 0 8px;
-  box-sizing:border-box;
-  -moz-box-sizing:border-box;
-}
+
+
+input[type=text], input[type=number],textarea {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+   
+  }
+  
+
 .buttons {
-  width: 100%;
-  padding: 20px;
-  text-align:center;
-  display:inline-block;
-  border:none; 
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    
 }
+
+
 #message,#message2{
-  cursor: pointer;
-  text-decoration: bold;
+    cursor: pointer;
+    text-decoration: bold;
 }
-#submitBtn {
-  border:none;
-  border-radius: 5px;
-  color:#003133;   
-  margin-right: 5px;
-  height:25px; 
-  cursor: pointer;
-  font-size: 20px;
+
+  
+
+.editBtn, #deleteBtn,#readmore,#submitBtn {
+    border:none;
+    border-radius: 5px;
+    color: white;   
+    margin-right: 5px;
+    /* width:10%; */
+    height:25px; 
+    cursor: pointer;
 }
+
+.editBtn{
+    background:#1abc9c;
+}
+#deleteBtn{
+    background:#8B0000;
+}
+
+
+
 /* The Modal (background) */
 .modal {
-  display:none; /* Hidden by default */
-  position:fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
+
 /* Modal Content */
 .modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  animation-name: animatetop;
-  animation-duration: 1s
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    /*-webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;*/
+    animation-name: animatetop;
+    animation-duration: 1s
 } 
 .compose_form{
-  width: 40%;
-  margin: auto; 
+    width: 40%;
+    margin: auto;
+    
+    
 }
+/* */
+
 @keyframes animatetop {
-  from { opacity:0}
-  to {opacity:1}
+    from { opacity:0}
+    to {opacity:1}
 }
+
+/* The Close Button */
+.closeBtn,.closeBtn2 {
+    color: #4B99BD;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeEditBtn , .closeEditBtn2{
+    color: #4B99BD;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 2px 16px;
+}
+
+.closeEditBtn:hover, .closeEditBtn2:hover,
+.closeEditBtn:focus, closeEditBtn2:focus{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+/* submit button */
 #submit{
-  margin-top:10px;
-text-align: center;
+    margin-top:10px;
+  text-align: center;
+
 }
+
+
+.modal-body {
+  padding: 2px 16px;
+    margin-bottom: 20px;
+
+}
+.modal-body input[type=text],textarea{
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.Edit-body {
+  padding: 2px 16px;
+    margin-bottom: 20px;
+
+}
+.Edit-body input[type=text]{
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.closeBtn {
+    color: #4B99BD;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 2px 16px;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #4B99BD;
+    color: white;
+}
+
 /* end modal css */
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media (max-width: 700px) {
-  .row, .navbar {   
-      flex-direction: column;
-  }
-  .modal-content {
-      width: 80%;
-  } 
+    .row, .navbar {   
+        flex-direction: column;
+    } 
+    .modal-content {
+        width: 80%; 
+    }   
 }
