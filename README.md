@@ -1,42 +1,74 @@
-# EPIC_MAIL
+[![Build Status](https://travis-ci.org/jennizalwango/epicmail2.svg?branch=ft-delete)](https://travis-ci.org/jennizalwango/epicmail2)
+[![Coverage Status](https://coveralls.io/repos/github/jennizalwango/epicmail2/badge.svg?branch=ft-delete)](https://coveralls.io/github/jennizalwango/epicmail2?branch=ft-delete)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b188f0d76827a1124f58/maintainability)](https://codeclimate.com/github/jennizalwango/epicmail2/maintainability)
 
-# project name
- EPIC_MAIL
+## project name 
+  epic mail
 
-## Project Overview: ##
-User sers can sign up. Users can login. Users can create groups. Users can send a message to individuals. Users can view their inbox and read messages. Users can retract sent messages. Users can save an email as draft and send it later or delete it.
+## project overview
+  Epic mail is an online system that improves and makes communcation easliy where a user 
+  Create a user account.Sign in the system.Get all received emails.
+  Get all the unread emails and get all emails sent by a the other user.
+  Get a specific user’s email.
+  Send email to individuals.Delete an email in a user’s inbox
 
-## The live demo for this project can be found at: ##
-```bash
-https://jennizalwango.github.io/EPIC_MAIL/UI/
-```
+## Prerequisties
+Inorder  to run this application you need the following;
+you need to have [python3](https://www.python.org/downloads/)  installed on your machine.
 
-## Github repository can be found at: ##
-```bash
-https://github.com/jennizalwango/EPIC_MAIL
-```
+You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installed on your machine.
 
-## PivotalTracker link: ##
-```bash
-https://www.pivotaltracker.com/n/projects/2227254
-```
+## Installing 
 
-## Project usage: ##
-This project is divided into two parts:
-1). The user side where a user is able to create and log into the system, read their email messages, send emails and save emails
-```bash
-To access the user side use ==>>>>(email="user@gmail.com" && password="user123").
-```
-
-2). The admin side where an admin is able to log into the system,Add users and create groups
-```bash
-To access admin side use ==>>>>(email="admin@gmail.com" && password="admin123").
-```
-
-## Configuration instructions: ##
-For one to use this application, a computer, smartphone, browser and a steady internet connection are required.
+##You have to install a virutualenvirnoment, 
+ `pip3 install virtualenv`.
 
 
-## Credits and acknowledgement: ##
-My credit goes to the Andela team that have given me this opportunity to exercise my abilities plus my friends in the same struggle that have given me technical knowledge.
+##Create the virtual envirnoment
+ `virtualenv myenv`.
 
+
+##Activate your virtualenv to start working.
+ `source myenv/bin/activate`.
+
+Install the app dependencies,these are found in the `requirements.txt`
+
+The application is bulit with a python flamework called [Flask](http://flask.pocoo.org/).
+Go on and install pylint to help you run the tests of the application
+
+### To run the tests:
+  `python -m pytest`  or
+  `python -m unittest`  and this will show you the coverage of the tests locally
+
+Install all application requirements from the requirements files found in the root folder
+ `pip install -r requirements`
+All done! Now,start your server by running  `python run.py`.
+
+
+## Functionality
+-Create an account and sign in to the system
+
+-Get all received emails.
+
+-Get all the unread emails
+
+-Get all emails sent by a the other user
+
+-Get a specific user’s email
+
+-Send email to individuals.
+
+-Delete an email in a user’s inbox
+
+
+## Supported Endpoints
+| Method | Endpoint | Description | Body  |
+|--------|----------|-------------|-------|
+| POST   |/auth/signup/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
+| POST   |/auth/login/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
+| POST   |/messages/ |Create  or send a message|{"subject": "hackthon", "message":"we will hold an hackthon", "status":"sent"}|
+| GET    |/messages/unread|/status/|Get all unread message|
+| GET    |/messages/|Get all received message|
+| GET    |/messages/sent/status/|Get all sent messages|
+| GET    |/messages/<message-id>/|get a specific email message|
+| DELETE |/messages/<message-id>/|Delete a specific message|
