@@ -1,9 +1,5 @@
-[![Build Status](https://travis-ci.org/jennizalwango/epicmail2.svg?branch=ft-delete)](https://travis-ci.org/jennizalwango/epicmail2)
-[![Coverage Status](https://coveralls.io/repos/github/jennizalwango/epicmail2/badge.svg?branch=ft-delete)](https://coveralls.io/github/jennizalwango/epicmail2?branch=ft-delete)
-[![Maintainability](https://api.codeclimate.com/v1/badges/b188f0d76827a1124f58/maintainability)](https://codeclimate.com/github/jennizalwango/epicmail2/maintainability)
-
 ## project name 
-  epic mail
+  Epic Mail
 
 ## project overview
   Epic mail is an online system that improves and makes communcation easliy where a user 
@@ -12,14 +8,33 @@
   Get a specific user’s email.
   Send email to individuals.Delete an email in a user’s inbox
 
+## Getting started
+ These instructions will get you acopy of the project up and running on your local machine for development and testing purposes
+
 ## Prerequisties
 Inorder  to run this application you need the following;
 you need to have [python3](https://www.python.org/downloads/)  installed on your machine.
 
-You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installed on your machine.
+You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installed on your 
+machine.
+
+The application is bulit with a python flamework called [Flask](http://flask.pocoo.org/).
+Go on and install pylint to help you run the tests of the application
+Pylint is a python Linting module used for running a program that will analyse code for potential errors
+ to install it run
+
+`pip install pylint`
 
 ## Installing 
 
+To deploy this appplication ;
+`https://github.com/jennizalwango/EPIC_MAIL.git`
+
+ Extract and open this application in a text editor eg 
+ `VScode`
+ `Submile`
+ `Atom`
+  
 ##You have to install a virutualenvirnoment, 
  `pip3 install virtualenv`.
 
@@ -27,23 +42,23 @@ You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installe
 ##Create the virtual envirnoment
  `virtualenv myenv`.
 
-
 ##Activate your virtualenv to start working.
  `source myenv/bin/activate`.
 
-Install the app dependencies,these are found in the `requirements.txt`
+ Good then install the app dependencies,these are found in the `requirements.txt`
+ `pip install -r requiremnets.txt`
+This will help you get all the app dependencies used in the application development
 
-The application is bulit with a python flamework called [Flask](http://flask.pocoo.org/).
-Go on and install pylint to help you run the tests of the application
+Execute the application by running a given command 
+ `python run.py`
+
+After running that command the server will start running http://127.0.0.1.5000/ which is the default URL 
 
 ### To run the tests:
   `python -m pytest`  or
   `python -m unittest`  and this will show you the coverage of the tests locally
 
-Install all application requirements from the requirements files found in the root folder
- `pip install -r requirements`
 All done! Now,start your server by running  `python run.py`.
-
 
 ## Functionality
 -Create an account and sign in to the system
