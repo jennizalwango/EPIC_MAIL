@@ -21,7 +21,7 @@ class CreateMail(MethodView):
         
         subject = data.get("subject", None)
         message = data.get("message", None)
-        status = "sent"
+        status = data.get("status", None)
         sender_id = data.get("sender_id",None)
         receiver_id = data.get("receiver_id",None)
         
@@ -33,4 +33,6 @@ class CreateMail(MethodView):
             "data": [message.to_dict()]
         }
         return jsonify(response), 201
+
+        
         

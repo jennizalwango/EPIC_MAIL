@@ -1,3 +1,4 @@
+""""""
 import datetime
 import re
 from flask import request, jsonify
@@ -18,8 +19,7 @@ class Validations:
                 "error": "Wrong content Type"
             }
 
-        if "first_name" not in data or "last_name" not in data or "password"\
-                not in data or "email" not in data or "is_admin" not in data:
+        if "first_name" not in data or "last_name" not in data or "password" not in data or "email" not in data or "is_admin" not in data:
             return {
                 "status": 400,
                 "error": "wrong Body Format"
@@ -133,7 +133,7 @@ class Validations:
                 "message": "The application content type must be json"
             }
 
-        if "subject" not in data or "message" not in data or "sender_id" not in data or "receiver_id" not in data:
+        if "subject" not in data or "message" not in data or "sender_id" not in data or "status" not in data or "receiver_id" not in data:
             return {
                 "status": 400,
                 "message": "Wrong body format"
@@ -143,7 +143,7 @@ class Validations:
         created_on = datetime.datetime.now()
         subject = data.get("subject")
         message = data.get("message")
-        status = "sent"
+        status = data.get("status")
         sender_id = data.get("sender_id")
         receiver_id = data.get("receiver_id")
 
@@ -158,7 +158,7 @@ class Validations:
                 "message":"The receiver ID and sender ID should be integer"
             }
 
-        if not subject and not message and not subject and not receiver_id and not sender_id:
+        if not subject and not message and not subject and not status  and not receiver_id and not sender_id:
             return {
                 "status": 400,
                 "message": "Felids must not be empty"

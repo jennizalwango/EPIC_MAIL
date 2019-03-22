@@ -1,42 +1,103 @@
-# EPIC_MAIL
+## project name 
+  Epic Mail
 
-# project name
- EPIC_MAIL
+## project overview
+  Epic mail is an online system that improves and makes communcation easliy where a user 
+  Create a user account.Sign in the system.Get all received emails.
+  Get all the unread emails and get all emails sent by a the other user.
+  Get a specific user’s email.
+  Send email to individuals.Delete an email in a user’s inbox
 
-## Project Overview: ##
-User sers can sign up. Users can login. Users can create groups. Users can send a message to individuals. Users can view their inbox and read messages. Users can retract sent messages. Users can save an email as draft and send it later or delete it.
+## Getting started
+ These instructions will get you acopy of the project up and running on your local machine for development and testing purposes
 
-## The live demo for this project can be found at: ##
-```bash
-https://jennizalwango.github.io/EPIC_MAIL/UI/
-```
+## Prerequisties
+Inorder  to run this application you need the following;
+you need to have [python3](https://www.python.org/downloads/)  installed on your machine.
 
-## Github repository can be found at: ##
-```bash
-https://github.com/jennizalwango/EPIC_MAIL
-```
+You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installed on your 
+machine.
 
-## PivotalTracker link: ##
-```bash
-https://www.pivotaltracker.com/n/projects/2227254
-```
+The application is bulit with a python flamework called [Flask](http://flask.pocoo.org/).
+Go on and install pylint to help you run the tests of the application
+Pylint is allows someone to write code following a specific style guide
 
-## Project usage: ##
-This project is divided into two parts:
-1). The user side where a user is able to create and log into the system, read their email messages, send emails and save emails
-```bash
-To access the user side use ==>>>>(email="user@gmail.com" && password="user123").
-```
+ to install it run
+`pip install pylint`
 
-2). The admin side where an admin is able to log into the system,Add users and create groups
-```bash
-To access admin side use ==>>>>(email="admin@gmail.com" && password="admin123").
-```
+## Installing 
 
-## Configuration instructions: ##
-For one to use this application, a computer, smartphone, browser and a steady internet connection are required.
+To clone this appplication ;
+
+`https://github.com/jennizalwango/EPIC_MAIL.git`
 
 
-## Credits and acknowledgement: ##
-My credit goes to the Andela team that have given me this opportunity to exercise my abilities plus my friends in the same struggle that have given me technical knowledge.
+Then change into the directory
 
+ `cd <app directory>`
+
+ Extract and open this application in a text editor eg 
+ `VScode`
+ `Submile`
+ `Atom`
+  
+##You have to install a virutualenvirnoment, 
+ `pip3 install virtualenv`.
+
+
+##Create the virtual envirnoment
+ `virtualenv myenv`.
+
+##Activate your virtualenv to start working.
+For Windows:
+ ` (virtualenv name)\scripts\activate`
+
+	  and 
+
+For Linux:
+ ` source(virtualenv name)/bin/activate`
+
+ Good then install the app dependencies,these are found in the `requirements.txt`
+
+ `pip install -r requiremnets.txt`
+
+This will help you get all the app dependencies used in the application development
+
+Execute the application by running a given command 
+
+ `python run.py`
+
+After running that command the server will start running http://127.0.0.1.5000/ which is the default URL 
+
+### To run the tests:
+  `python -m pytest`  or
+  `python -m unittest`  and this will show you the coverage of the tests locally
+
+
+## Functionality
+-Create an account and sign in to the system
+
+-Get all received emails.
+
+-Get all the unread emails
+
+-Get all emails sent by a the other user
+
+-Get a specific user’s email
+
+-Send email to individuals.
+
+-Delete an email in a user’s inbox
+
+
+## Supported Endpoints
+| Method | Endpoint | Description | Body  |
+|--------|----------|-------------|-------|
+| POST   |/auth/signup/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
+| POST   |/auth/login/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
+| POST   |/messages/ |Create  or send a message|{"subject": "hackthon", "message":"we will hold an hackthon", "status":"sent"}|
+| GET    |/messages/unread|/status/|Get all unread message|
+| GET    |/messages/|Get all received message|
+| GET    |/messages/sent/status/|Get all sent messages|
+| GET    |/messages/<message-id>/|get a specific email message|
+| DELETE |/messages/<message-id>/|Delete a specific message|
