@@ -204,11 +204,11 @@ width:400px;
 height:400px;
 background-color: #003133;
 margin-top: 19%;
-
 color: #ffffff;
 padding:10px;
 border-radius: 15px;
 }
+
 .container2{
   position: relative;
   
@@ -219,13 +219,11 @@ border-radius: 15px;
   height:450px;
   background-color: #003133;
   margin-top: 18%;
-  
   color: #ffffff;
   padding:10px;
   border-radius: 15px;
   }
-
-
+  
 #AddUser{
 display: none;
 height: 400px;
@@ -246,6 +244,14 @@ body {margin: 0;}
   position:absolute;
   left:0%px;
   top: 0%px;
+}
+@media screen and (max-width: 700px){
+  .sidebar{
+    display: none;
+  }
+  .maincontainer{
+    height: 50%;
+    } 
 }
 .ul{
   margin: 0%;
