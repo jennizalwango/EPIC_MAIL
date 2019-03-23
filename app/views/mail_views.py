@@ -17,7 +17,6 @@ class CreateMail(MethodView):
         val_results = validates.create_message_validate(contentType, data)
         if val_results:
             return jsonify(val_results), 400
-
         
         subject = data.get("subject", None)
         message = data.get("message", None)
@@ -34,5 +33,4 @@ class CreateMail(MethodView):
         }
         return jsonify(response), 201
 
-        
         
