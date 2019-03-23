@@ -23,42 +23,67 @@ Go on and install pylint to help you run the tests of the application
 Pylint is a python Linting module used for running a program that will analyse code for potential errors
  to install it run
 
-`pip install pylint`
+```
+pip install pylint
+```
 
 ## Installing 
 
-To deploy this appplication ;
-`https://github.com/jennizalwango/EPIC_MAIL.git`
+To clone this appplication;
 
- Extract and open this application in a text editor eg 
- `VScode`
- `Submile`
- `Atom`
+ ```
+  $ git clone : https://github.com/jennizalwango/EPIC_MAIL.git
+```
+
+
+Then change directory 
+```
+ $ cd <app directory>
+```
+
+ Extract and open this application in a text editor Vscode or any other editor
+ for Vscode run this 
+ ```
+ $ code .
+ ``` 
   
 ##You have to install a virutualenvirnoment, 
- `pip3 install virtualenv`.
-
+```
+  $ pip3 install virtualenv
+```
 
 ##Create the virtual envirnoment
- `virtualenv myenv`.
+```
+  $ virtualenv myenv
+```
 
 ##Activate your virtualenv to start working.
- `source myenv/bin/activate`.
+ ```
+ $ source myenv/bin/activate
+ ```
 
  Good then install the app dependencies,these are found in the `requirements.txt`
- `pip install -r requiremnets.txt`
+ ```
+ $ pip install -r requiremnets.txt
+ ```
+
 This will help you get all the app dependencies used in the application development
 
 Execute the application by running a given command 
- `python run.py`
+ 
+ ```
+ $ python run.py
+ ```
 
 After running that command the server will start running http://127.0.0.1.5000/ which is the default URL 
 
-### To run the tests:
-  `python -m pytest`  or
-  `python -m unittest`  and this will show you the coverage of the tests locally
+### How to run the tests:
+  ``` 
+  $ pytest -v  or
+    
+  $ python -m unittest 
 
-All done! Now,start your server by running  `python run.py`.
+  ```
 
 ## Functionality
 -Create an account and sign in to the system
@@ -79,11 +104,11 @@ All done! Now,start your server by running  `python run.py`.
 ## Supported Endpoints
 | Method | Endpoint | Description | Body  |
 |--------|----------|-------------|-------|
-| POST   |/auth/signup/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
-| POST   |/auth/login/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
-| POST   |/messages/ |Create  or send a message|{"subject": "hackthon", "message":"we will hold an hackthon", "status":"sent"}|
-| GET    |/messages/unread|/status/|Get all unread message|
-| GET    |/messages/|Get all received message|
-| GET    |/messages/sent/status/|Get all sent messages|
-| GET    |/messages/<message-id>/|get a specific email message|
-| DELETE |/messages/<message-id>/|Delete a specific message|
+| POST   |/auth/signup/api/v1/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
+| POST   |/auth/login/api/v1/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
+| POST   |/messages/api/v1/ |Create  or send a message|{"subject": "hackthon", "message":"we will hold an hackthon", "status":"sent"}|
+| GET    |/messages/unread/api/v1|/status/|Get all unread message|
+| GET    |/messages/api/v1/|Get all received message|
+| GET    |/messages/sent/api/v1/status/|Get all sent messages|
+| GET    |/messages/<message-id>/api/v1/|get a specific email message|
+| DELETE |/messages/<message-id>/api/v1/|Delete a specific message|
