@@ -27,7 +27,7 @@ class CreateUser(MethodView):
             if user.email == email:
                 return jsonify({
                     "status": 400,
-                    "message": "User email already exits"
+                    "message": "User email already exits,Register again"
                 }), 400
         
         user = User(first_name, last_name, email, password, is_admin)

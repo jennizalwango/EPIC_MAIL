@@ -22,7 +22,7 @@ class Validations:
                 not in data or "email" not in data or "is_admin" not in data:
             return {
                 "status": 400,
-                "error": "wrong Body Format"
+                "error": "Wrong body format for user fields"
             }
 
         if first_name =="":
@@ -100,7 +100,7 @@ class Validations:
         if "email" not in data and "password" not in data:
             return {
                 "status": 400,
-                "error": "Wrong body Fomat"
+                "error": "Wrong body Fomat for login user"
             }
 
         data = request.get_json()
@@ -136,7 +136,7 @@ class Validations:
         if "subject" not in data or "message" not in data or "sender_id" not in data or "receiver_id" not in data:
             return {
                 "status": 400,
-                "message": "Wrong body format"
+                "message": "Wrong body format for creating message fields"
             }
 
         data = request.get_json()
