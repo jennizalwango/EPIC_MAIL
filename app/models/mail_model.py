@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 message_list = []
@@ -14,6 +13,7 @@ class Messages:
     self.sender_id = sender_id
     self.receiver_id = receiver_id
 
+
   def to_dict(self):
     return self.__dict__
 
@@ -28,6 +28,7 @@ class Messages:
         message_id += 1
     return message_id
 
+  
   @staticmethod
   def generate_parent_message_id():
     parent_msg_id = len(message_list) + 1
