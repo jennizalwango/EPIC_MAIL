@@ -7,6 +7,6 @@ class UserUrl:
   def get_user_routes(app):
     register_user_view = CreateUser.as_view("register")
     login_user_view = LoginUser.as_view("log_in_user")
-    app.add_url_rule("/auth/signup", view_func= register_user_view, methods=["POST",])
-    app.add_url_rule("/auth/login", view_func=login_user_view, methods=["POST",])
+    app.add_url_rule("/auth/signup/api/v1", view_func= register_user_view, methods=["POST",])
+    app.add_url_rule("/auth/login/api/v1", view_func=login_user_view, methods=["POST",])
   
