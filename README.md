@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jennizalwango/epicmail2.svg?branch=master)](https://travis-ci.org/jennizalwango/epicmail2)
+
 ## project name 
   Epic Mail
 
