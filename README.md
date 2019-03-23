@@ -29,14 +29,14 @@ pip install pylint
 
 ## Installing 
 
-To clone this appplication;
+> - To clone this appplication;
 
  ```
   $ git clone : https://github.com/jennizalwango/EPIC_MAIL.git
 ```
 
 
-Then change directory 
+ > - Then change directory 
 ```
  $ cd <app directory>
 ```
@@ -47,17 +47,17 @@ Then change directory
  $ code .
  ``` 
   
-##You have to install a virutualenvirnoment, 
+> - You have to install a virutualenvirnoment, 
 ```
   $ pip3 install virtualenv
 ```
 
-##Create the virtual envirnoment
+> - Create the virtual envirnoment
 ```
   $ virtualenv myenv
 ```
 
-##Activate your virtualenv to start working.
+> - Activate your virtualenv to start working.
  ```
  $ source myenv/bin/activate
  ```
