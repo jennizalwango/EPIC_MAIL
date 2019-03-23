@@ -1,8 +1,4 @@
-[![Build Status](https://travis-ci.org/jennizalwango/epicmail2.svg?branch=master)](https://travis-ci.org/jennizalwango/epicmail2)
-
-[![Coverage Status](https://coveralls.io/repos/github/jennizalwango/EPIC_MAIL/badge.svg?branch=master)](https://coveralls.io/github/jennizalwango/EPIC_MAIL?branch=master)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/7375c492ed31fcf0768e/maintainability)](https://codeclimate.com/github/jennizalwango/EPIC_MAIL/maintainability)
+[![Build Status](https://travis-ci.org/jennizalwango/EPIC_MAIL.svg?branch=ft-get_emails)](https://travis-ci.org/jennizalwango/EPIC_MAIL)[![Coverage Status](https://coveralls.io/repos/github/jennizalwango/EPIC_MAIL/badge.svg?branch=ft-get_emails)](https://coveralls.io/github/jennizalwango/EPIC_MAIL?branch=ft-get_emails)[![Maintainability](https://api.codeclimate.com/v1/badges/7375c492ed31fcf0768e/maintainability)](https://codeclimate.com/github/jennizalwango/EPIC_MAIL/maintainability)
 
 
 ## project name 
