@@ -29,6 +29,7 @@ class BaseTestCase(TestCase):
 	    "sender_id":2
     }
 
+
   def tearDown(self):
     user_views.user_list = []
     mail_views.message_list = []
