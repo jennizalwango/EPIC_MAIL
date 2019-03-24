@@ -22,8 +22,7 @@ You need to have [flask](http://flask.pocoo.org/docs/1.0/installation/) installe
 machine.
 
 The application is bulit with a python flamework called [Flask](http://flask.pocoo.org/).
-Go on and install pylint to help you run the tests of the application
-Pylint is a python Linting module used for running a program that will analyse code for potential errors
+Pylint allows one to write code following a specific style guide.
  to install it run
 
 ```
