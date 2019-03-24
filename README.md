@@ -108,11 +108,11 @@ After running that command the server will start running http://127.0.0.1.5000/ 
 ## Supported Endpoints
 | Method | Endpoint | Description | Body  |
 |--------|----------|-------------|-------|
-| POST   |/auth/signup/api/v1/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
-| POST   |/auth/login/api/v1/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
+| POST   |/api/v1/auth/signup/ |Create User|{"first_name":"jenny", "last_name":"zawal","password":"jenny123","email":"jenny23@gmail.com", "is_admin": true}|
+| POST   |/api/v1/auth/login/ |Log in User|{"email": "jenny123@gmail.com", "password":"jenny123"}|
 | POST   |/messages/api/v1/ |Create  or send a message|{"subject": "hackthon", "message":"we will hold an hackthon", "status":"sent"}|
-| GET    |/messages/unread/api/v1|/status/|Get all unread message|
-| GET    |/messages/api/v1/|Get all received message|
-| GET    |/messages/sent/api/v1/status/|Get all sent messages|
-| GET    |/messages/<message-id>/api/v1/|get a specific email message|
-| DELETE |/messages/<message-id>/api/v1/|Delete a specific message|
+| GET    |/api/v1/messages/unread/|/status/|Get all unread message|
+| GET    |/api/v1/messages/|Get all received message|
+| GET    |/api/v1/messages/sent/status/|Get all sent messages|
+| GET    |/api/v1/messages/<message-id>/|get a specific email message|
+| DELETE |/api/v1/messages/<message-id>/|Delete a specific message|
