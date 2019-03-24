@@ -7,6 +7,7 @@ from app.views.validations import Validations
 from app.models.user_model import user_list
 from app.models.user_model import current_user
 
+
 class CreateUser(MethodView):
     def post(self):
         data = request.get_json(force=True)
@@ -29,7 +30,7 @@ class CreateUser(MethodView):
                     "status": 400,
                     "message": "User email already exits,Register again"
                 }), 400
-        
+
         user = User(first_name, last_name, email, password, is_admin)
         user_list.append(user)
         auth_token = user.encode_auth_token(user.id)
@@ -37,8 +38,8 @@ class CreateUser(MethodView):
             "status": 201,
             "message": "User account created successfully",
             "data": [{
-                'token':str(auth_token)
-                }]
+                'token': str(auth_token)
+            }]
         }
         return jsonify(response), 201
 
@@ -52,7 +53,7 @@ class LoginUser(MethodView):
         login_results = validate_login.login_validations(contentType, data)
         if login_results:
             return jsonify(login_results), 400
-        
+
         data = request.get_json(force=True)
         email = data.get("email", None)
         password = data.get("password", None)
@@ -64,11 +65,11 @@ class LoginUser(MethodView):
                     "status": 200,
                     "message": "Login successful",
                     "data": [{
-                        'token':str(auth_token)
+                        'token': str(auth_token)
                     }]
                 }), 200
 
         return jsonify({
-          "status": 400,
-          "error": "Invaild email or password"
-          }), 400
+            "status": 400,
+            "error": "Invaild email or password"
+        }), 400

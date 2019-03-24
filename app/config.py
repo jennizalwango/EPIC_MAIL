@@ -1,25 +1,27 @@
 import os
 
+
 class Config:
-  DEBUG = False
-  TESTING = False
-  SECRET_KEY = os.environ.get("SECRET_KEY", "1Nrd2JFQIWAh3aa0q9zrN15www7Czc6Q")
+    DEBUG = False
+    TESTING = False
+    SECRET_KEY = os.environ.get(
+        "SECRET_KEY", "1Nrd2JFQIWAh3aa0q9zrN15www7Czc6Q")
 
 
 class Production(Config):
-  pass
+    pass
 
 
 class Development(Config):
-  DEBUG = True
-  
+    DEBUG = True
+
 
 class Testing(Config):
-  TESTING = True
+    TESTING = True
 
 
 configuration = {
-  "development": Development,
-  "production": Production,
-  "testing": Testing
+    "development": Development,
+    "production": Production,
+    "testing": Testing
 }
