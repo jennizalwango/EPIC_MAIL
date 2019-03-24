@@ -25,32 +25,32 @@ class Validations:
                 "error": "Wrong body format for user fields"
             }
 
-        if first_name =="":
+        if first_name == "":
             return {
                 "status": 400,
                 "message": "Firsname should not be empty"
             }
-        if email=="":
+        if email == "":
             return {
                 "status": 400,
                 "error": "Email should not be empty"
             }
-        if last_name=="":
+        if last_name == "":
             return {
                 "status": 400,
                 "error": "Last name should not be empty"
             }
-        if password=="":
+        if password == "":
             return {
                 "status": 400,
                 "error": "Password should not be empty"
             }
 
-        if is_admin=="":
+        if is_admin == "":
             return {
                 "status": 400,
                 "error": "is_admin should not be empty"
-                }
+            }
 
         if not isinstance(first_name, str) and len(password) < 6:
             return {
@@ -89,7 +89,7 @@ class Validations:
             }
 
         return {}
-    
+
     def login_validations(self, contentType, data):
         if contentType != "application/json":
             return {
@@ -147,15 +147,15 @@ class Validations:
         sender_id = data.get("sender_id")
         receiver_id = data.get("receiver_id")
 
-        if not isinstance(subject, str)  and not isinstance(message, str) and not isinstance(status, str) :
+        if not isinstance(subject, str) and not isinstance(message, str) and not isinstance(status, str):
             return {
                 "status": 400,
-                "message":"Fields must be Strings"
+                "message": "Fields must be Strings"
             }
-        if not isinstance(sender_id,int) and not isinstance(receiver_id, int):
+        if not isinstance(sender_id, int) and not isinstance(receiver_id, int):
             return{
-                "status":400,
-                "message":"The receiver ID and sender ID should be integer"
+                "status": 400,
+                "message": "The receiver ID and sender ID should be integer"
             }
 
         if not subject and not message and not subject and not receiver_id and not sender_id:
