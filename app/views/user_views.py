@@ -6,9 +6,12 @@ from flask.views import MethodView
 from app.views.validations import Validations
 from app.models.user_model import user_list
 from app.models.user_model import current_user
+from flasgger import swag_from, Swagger
+# from app import swagger
 
 
 class CreateUser(MethodView):
+    @swag_from('../docs/signup.yml', methods=["POST"])
     def post(self):
         data = request.get_json(force=True)
         contentType = request.content_type
@@ -45,6 +48,7 @@ class CreateUser(MethodView):
 
 
 class LoginUser(MethodView):
+    @swag_from('../docs/login.yml')
     def post(self):
         data = request.get_json()
         contentType = request.content_type

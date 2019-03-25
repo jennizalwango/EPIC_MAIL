@@ -5,9 +5,12 @@ from app.models.mail_model import Messages
 from flask.views import MethodView
 from app.views.validations import Validations
 from app.models.mail_model import message_list
+from flasgger import swag_from
+# from app import swagger
 
 
 class CreateMail(MethodView):
+    @swag_from('../docs/create_message.yml', methods=["POST"])
     def post(self):
         data = request.get_json(force=True)
         contentType = request.content_type
@@ -19,7 +22,7 @@ class CreateMail(MethodView):
 
         subject = data.get("subject", None)
         message = data.get("message", None)
-        status = "sent"
+        status = data.get("status", None)
         sender_id = data.get("sender_id", None)
         receiver_id = data.get("receiver_id", None)
 
@@ -32,17 +35,18 @@ class CreateMail(MethodView):
         }
         return jsonify(response), 201
 
+    @swag_from('../docs/get_sent_message.yml', methods=["GET"])
     def get(self, data):
-       # data is either status or message-id
+        # data is either status or message-id
         # get all received mails
         if data is None:
             received_mails = [mail.to_dict() for mail in message_list if mail.to_dict()[
                 'status'] == 'received']
-            if not received_mails:
-                return jsonify({
-                    "status": 404,
-                    "error": "No received mails found"
-                }), 404
+            # if not received_mails:
+            #     return jsonify({
+            #         "status": 200,
+            #         "data": received_mails
+            #     }), 200
             return jsonify({
                 "status": 200,
                 "data": received_mails
@@ -50,13 +54,13 @@ class CreateMail(MethodView):
         # get all sent or unread or received mails
         if data in ['sent', 'unread', 'received', 'draft']:
             mails = [mail.to_dict()
-                     for mail in message_list 
+                     for mail in message_list
                      if mail.to_dict()['status'] == data]
             if not mails:
                 return jsonify({
-                    "status": 400,
-                    "error": "Not mail found"
-                }), 400
+                    "status": 200,
+                    "data": mails
+                }), 200
             return jsonify({
                 "status": 200,
                 "data": mails
@@ -66,9 +70,9 @@ class CreateMail(MethodView):
             message_id = int(data)
         except:
             return jsonify({
-                "status": 400,
-                "error": "Invalid status or message_id"
-            }), 400
+                "status": 404,
+                "error": "Invalid message_id"
+            }), 404
 
         get_mail = [mail.to_dict() for mail in message_list if mail.to_dict()[
             'message_id'] == int(data)]
@@ -99,6 +103,6 @@ class CreateMail(MethodView):
             }), 404
         message_list.remove(get_mail[0])
         return jsonify({
-            "status": 200,
+            "status": 202,
             "data": [{'message': 'Message successfully deleted'}]
-        }), 200
+        }), 202

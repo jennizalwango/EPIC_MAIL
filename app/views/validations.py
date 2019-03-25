@@ -55,7 +55,8 @@ class Validations:
         if not isinstance(first_name, str) and len(password) < 6:
             return {
                 "status": 400,
-                "error": "Firstname should be strings and password should have be greater or equal to 6 characters"
+                "error": "Firstname should be strings and password should \
+                    have be greater or equal to 6 characters"
             }
 
             if not isinstance(last_name, str):
@@ -143,7 +144,7 @@ class Validations:
         created_on = datetime.datetime.now()
         subject = data.get("subject")
         message = data.get("message")
-        status = "sent"
+        status = data.get("status")
         sender_id = data.get("sender_id")
         receiver_id = data.get("receiver_id")
 
