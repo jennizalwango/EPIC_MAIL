@@ -6,7 +6,6 @@ from flask.views import MethodView
 from app.views.validations import Validations
 from app.models.mail_model import message_list
 from flasgger import swag_from
-# from app import swagger
 
 
 class CreateMail(MethodView):

@@ -7,7 +7,6 @@ from app.views.validations import Validations
 from app.models.user_model import user_list
 from app.models.user_model import current_user
 from flasgger import swag_from, Swagger
-# from app import swagger
 
 
 class CreateUser(MethodView):
