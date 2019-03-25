@@ -1,0 +1,13 @@
+Create message
+---
+tags:
+  - User Authentication
+parameters:
+  - in: body
+    name: body
+    required: true
+    type: string
+    description: This route is used to create a message
+responses:
+  200:
+    description: Message  created successfully .
