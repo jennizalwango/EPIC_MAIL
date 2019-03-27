@@ -14,4 +14,6 @@ conn = psycopg2.connect(database = "epicmail",user="postgres", password="postgre
 
 
 from app.routes.user_routes import UserUrl
+from app.routes.mail_route import MessageUrls
 UserUrl.get_user_routes(app)
+MessageUrls.get_mail_routes(app)
