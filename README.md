@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/jennizalwango/EPIC_MAIL.svg?branch=challenge3)](https://travis-ci.org/jennizalwango/EPIC_MAIL)
 
 ## project name 
   Epic Mail
