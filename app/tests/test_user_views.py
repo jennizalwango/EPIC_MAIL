@@ -1,44 +1,45 @@
+import unittest
 from flask import json
 from app.tests.base import BaseTestCase
 
 
 class APITestCaseUser(BaseTestCase):
-    def test_register_user(self):
-        with self.client:
-            response = self.client.post(
-                "/api/v1/auth/signup", 
-                data=json.dumps(self.create_user), 
-                content_type='application/json')
-            self.assertEqual(response.status, '201 CREATED')
+  def test_register_user(self):
+    with self.client:
 
-    def test_register_user_already_exists(self):
-        with self.client:
-            response = self.client.post(
-                "/api/v1/auth/signup", 
-                data=json.dumps(self.create_user), 
-                content_type='application/json')
-            response = self.client.post(
-                "/api/v1/auth/signup", 
-                data=json.dumps(self.create_user), 
-                content_type='application/json')
-            self.assertEqual(response.status_code, 400)
-            self.assertIn(
-                "User email already exits,Register again", str(response.data))
+      new_user = {
+        "firstname":"jenny",
+        "lastname":"babyjenny",
+        "email":"baby@gmail.com",
+        "password":"1234567",
+        "isAdmin":"True"
+      }
+      response = self.client.post(
+        "/api/v2/auth/signup", 
+        data=json.dumps(new_user), 
+        content_type='application/json')
+      self.assertEqual(response.status, '201 CREATED')
+  
 
-    def test_login_user_sucessful(self):
-        with self.client:
-            self.client.post(
-                "/api/v1/auth/signup", 
-                data=json.dumps(self.create_user), 
-                content_type='application/json')
+  def test_register_user_already_exists(self):
+    with self.client:
+      self.client.post(
+        "/api/v2/auth/signup", 
+        data=json.dumps(self.create_user), 
+        content_type='application/json')
+      resp = self.client.post(
+        "/api/v2/auth/signup", 
+        data=json.dumps(self.create_user), 
+        content_type='application/json')
+      print(resp.data)
+      self.assertEqual(resp.status_code, 400)
+      self.assertIn("Failed, User already exists, Please sign In", str(resp.data))
 
-            user = {
-                "email": "jenny@gmail.com",
-                "password": "password"
-            }
-            response = self.client.post(
-                "/api/v1/auth/login", data=json.dumps(user), 
-                content_type='application/json')
-            self.assertEqual(response.status_code, 200)
-            results = json.loads(response.data.decode())
-            self.assertIn("Login successful", results["message"])
+  def test_login_user_sucessful(self):
+    with self.client:
+      response = self.client.post(
+        "/api/v2/auth/login", data=json.dumps(self.login_credentials), 
+        content_type='application/json')
+      self.assertEqual(response.status_code, 200)
+
+      

@@ -1,12 +1,34 @@
-from app.routes.mail_routes import CreatemessageUrl
-from app.routes.user_routes import UserUrl
-from flask import Flask
-from flasgger import Swagger
+import os
+from flask import Flask, jsonify
+import psycopg2
+from flask_bcrypt import Bcrypt
 
+# Initialize application
 app = Flask(__name__)
-swagger = Swagger(app)
+
+# Initialize Bcrypt
+app.config['SECRET_KEY'] = '12345678'
+bcrypt = Bcrypt(app)
 
 
+conn = None
+
+
+if os.environ.get("APP_ENV") == "development":
+  conn = psycopg2.connect(database = "epicmail",user="postgres", password="postgres",host="localhost",port=5432)
+
+if os.environ.get("APP_ENV") == "production":
+  DATABASE_URL = os.environ.get("DATABASE_URL")
+  conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+
+if os.environ.get("APP_ENV") == "testing":
+  conn = psycopg2.connect(database = "testdb",user="postgres", password="postgres",host="localhost",port=5432)
+
+
+
+from app.routes.user_routes import UserUrl
+from app.routes.mail_route import MessageUrls
+from app.routes.group_route import GroupUrl
 UserUrl.get_user_routes(app)
-
-CreatemessageUrl.get_messages_route(app)
+MessageUrls.get_mail_routes(app)
+GroupUrl.get_group_routes(app)

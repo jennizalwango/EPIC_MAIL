@@ -2,8 +2,10 @@ import datetime
 import jwt
 from functools import wraps
 from flask import request, jsonify
-from app.models.user_model import User, user_list
+from app import conn
+from app.models.user_model import User
 
+cur = conn.cursor()
 
 def token_required(func):
     @wraps(func)
@@ -22,7 +24,7 @@ def token_required(func):
             current_user = user_id
             if not isinstance(current_user, int):
                 return jsonify({
-                    "message": current_user
+                    "message":current_user
                 })
 
         except:
@@ -35,9 +37,9 @@ def token_required(func):
                 "message": message
             }), 401
 
-        return func(*args, **kwargs)
-    return decorated
+        return func(current_user, *args, **kwargs)
 
+    return decorated
 
 def get_current_user():
     token = request.headers['auth_token']

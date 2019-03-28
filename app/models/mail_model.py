@@ -1,40 +1,65 @@
-from datetime import datetime
+import datetime
+import jwt
+from app import app, conn,bcrypt
 
-message_list = []
+#establish a connection between our apllication and the database
+cur = conn.cursor()
 
 
-class Messages:
-    def __init__(self, subject, message, status, sender_id, receiver_id):
-        self.message_id = Messages.generate_id()
-        self.parentMessageId = self.generate_parent_message_id()
-        self.created_on = datetime.now()
+#User modal. this will be use as a template for creating objects of this class
+class Message:
+    """
+    Table schema
+    """
+    #lets create a mails table if it doesnt exist
+    @staticmethod
+    def create_message_table():
+        cur.execute('''CREATE TABLE IF NOT EXISTS messages
+            ( id SERIAL PRIMARY KEY    NOT NULL,
+            senderId       INTEGER     NOT NULL,
+            receiverId     INTEGER     NOT NULL,
+            subject        VARCHAR(255)     NOT NULL,
+            message        VARCHAR(255)     NOT NULL,
+            parentMessageId     INTEGER     NOT NULL,   
+            status VARCHAR(100)  DEFAULT 'sent',        
+            createdOn     DATE     NOT NULL );''')
+
+
+    #this constructor is called each time we create a new user
+    def __init__(self, senderId, receiverEmail, subject, message, parentMessageId):
+        self.senderId = senderId
+        self.receiverEmail = receiverEmail
         self.subject = subject
         self.message = message
-        self.status = status
-        self.sender_id = sender_id
-        self.receiver_id = receiver_id
-
-    def to_dict(self):
-        return self.__dict__
-
-    def to_str(self):
-        return str(self.__dict__)
+        self.parentMessageId = parentMessageId
+        self.createdOn = str(datetime.datetime.now())
+      
+       
+    #this saves users info into the database
+    def save(self):
+        """
+        Persist the message in the database
+        """
+        cur = conn.cursor()
+        sql = """
+            INSERT INTO messages (senderId, receiverId, subject, message, parentMessageId, createdOn) 
+                    VALUES (%s, %s, %s, %s, %s, %s)
+        """
+        cur.execute(sql,(self.senderId, Message.get_userId(self.receiverEmail), self.subject, self.message, self.parentMessageId, self.createdOn))
+        conn.commit()
 
     @staticmethod
-    def generate_id():
-        message_id = len(message_list) + 1
-        for message in message_list:
-            if message.message_id == message_id:
-                message_id += 1
-        return message_id
-
-    @staticmethod
-    def generate_parent_message_id():
-        parent_msg_id = len(message_list) + 1
-        if not message_list:
-            parent_msg_id = 1
-            return parent_msg_id
-        for message in message_list:
-            if message.parentMessageId == parent_msg_id:
-                parent_msg_id += 1
-            return parent_msg_id
+    def get_userId(user_email):
+        """
+        Get user_id
+        :param email:
+        :return: user_id
+        """
+        cur = conn.cursor()
+        sql1 = """
+             SELECT user_id FROM users WHERE email=%s
+        """
+        cur.execute(sql1,(user_email,))
+        user = cur.fetchone()
+        user_id = user
+        return user_id

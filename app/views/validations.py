@@ -22,41 +22,40 @@ class Validations:
                 not in data or "email" not in data or "is_admin" not in data:
             return {
                 "status": 400,
-                "error": "Wrong body format for user fields"
+                "error": "wrong Body Format"
             }
 
-        if first_name == "":
+        if first_name =="":
             return {
                 "status": 400,
                 "message": "Firsname should not be empty"
             }
-        if email == "":
+        if email=="":
             return {
                 "status": 400,
                 "error": "Email should not be empty"
             }
-        if last_name == "":
+        if last_name=="":
             return {
                 "status": 400,
                 "error": "Last name should not be empty"
             }
-        if password == "":
+        if password=="":
             return {
                 "status": 400,
                 "error": "Password should not be empty"
             }
 
-        if is_admin == "":
+        if is_admin=="":
             return {
                 "status": 400,
                 "error": "is_admin should not be empty"
-            }
+                }
 
         if not isinstance(first_name, str) and len(password) < 6:
             return {
                 "status": 400,
-                "error": "Firstname should be strings and password should \
-                    have be greater or equal to 6 characters"
+                "error": "Firstname should be strings and password should have be greater or equal to 6 characters"
             }
 
             if not isinstance(last_name, str):
@@ -90,7 +89,7 @@ class Validations:
             }
 
         return {}
-
+    
     def login_validations(self, contentType, data):
         if contentType != "application/json":
             return {
@@ -101,7 +100,7 @@ class Validations:
         if "email" not in data and "password" not in data:
             return {
                 "status": 400,
-                "error": "Wrong body Fomat for login user"
+                "error": "Wrong body Fomat"
             }
 
         data = request.get_json()
@@ -134,10 +133,10 @@ class Validations:
                 "message": "The application content type must be json"
             }
 
-        if "subject" not in data or "message" not in data or "sender_id" not in data or "receiver_id" not in data:
+        if "subject" not in data or "message" not in data or "status" not in data:
             return {
                 "status": 400,
-                "message": "Wrong body format for creating message fields"
+                "message": "Wrong body format"
             }
 
         data = request.get_json()
@@ -145,21 +144,14 @@ class Validations:
         subject = data.get("subject")
         message = data.get("message")
         status = data.get("status")
-        sender_id = data.get("sender_id")
-        receiver_id = data.get("receiver_id")
 
-        if not isinstance(subject, str) and not isinstance(message, str) and not isinstance(status, str):
+        if not isinstance(subject, str)  and not isinstance(message, str) and not isinstance(status, str):
             return {
                 "status": 400,
-                "message": "Fields must be Strings"
-            }
-        if not isinstance(sender_id, int) and not isinstance(receiver_id, int):
-            return{
-                "status": 400,
-                "message": "The receiver ID and sender ID should be integer"
+                "message":"Fields must be Strings"
             }
 
-        if not subject and not message and not subject and not receiver_id and not sender_id:
+        if not subject and not message and not subject and not status:
             return {
                 "status": 400,
                 "message": "Felids must not be empty"

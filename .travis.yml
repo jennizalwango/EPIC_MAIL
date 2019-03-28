@@ -1,11 +1,24 @@
 language: python
-python:
-  - "3.6"
-# command to install dependencies
-install:
-  - pip install -r requirements.txt
-# command to run tests
-script:
-  - pytest app/tests --cov=app/views
-after_success:
-  - coveralls
+
+python: 
+- "3.6"
+
+env:
+  global:
+    -APP_ENV ='testing'
+
+services:
+-postgres
+
+before_script:
+-"psql -c 'create database testdb;' -U postgres"
+
+script: 
+- python -m pytest --cov
+
+
+install: 
+- pip install -r requirements.txt
+
+after_success: 
+- coveralls

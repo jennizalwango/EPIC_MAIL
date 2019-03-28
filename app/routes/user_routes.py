@@ -1,13 +1,12 @@
-from app.views.user_views import CreateUser
-from app.views.user_views import LoginUser
-
+from app.views.user_veiws import RegisterUser, LoginUser
 
 class UserUrl:
-    @staticmethod
-    def get_user_routes(app):
-        register_user_view = CreateUser.as_view("register")
-        login_user_view = LoginUser.as_view("log_in_user")
-        app.add_url_rule("/api/v1/auth/signup",
-                         view_func=register_user_view, methods=["POST", ])
-        app.add_url_rule("/api/v1/auth/login",
-                         view_func=login_user_view, methods=["POST", ])
+  @staticmethod
+  def get_user_routes(app):
+     # Register classes as views
+    registration_view = RegisterUser.as_view('register')
+    login_view = LoginUser.as_view('login')
+
+    # Add rules for the api Endpoints
+    app.add_url_rule('/api/v2/auth/signup', view_func=registration_view, methods=['POST', ])
+    app.add_url_rule('/api/v2/auth/login', view_func=login_view, methods=['POST', ])

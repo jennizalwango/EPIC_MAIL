@@ -1,27 +1,42 @@
 import os
 
+base_dir = os.path.abspath(os.path.dirname(__file__))
 
-class Config:
+class BaseConfig:
+    """
+    Base application configuration
+    """
     DEBUG = False
-    TESTING = False
-    SECRET_KEY = os.environ.get(
-        "SECRET_KEY", "1Nrd2JFQIWAh3aa0q9zrN15www7Czc6Q")
-
-
-class Production(Config):
-    pass
-
-
-class Development(Config):
+    SECRET_KEY = os.getenv('SECRET_KEY', 'thisissecret')
+    
+class DevelopmentConfig(BaseConfig):
+    """
+    Development application configuration
+    """
     DEBUG = True
-
-
-class Testing(Config):
+    
+   
+class TestingConfig(BaseConfig):
+    """
+    Testing application configuration
+    """
+    DEBUG = True
     TESTING = True
+    DATABASE_NAME = 'testdb'
+   
+    
 
+
+class ProductionConfig(BaseConfig):
+    """
+    Production application configuration
+    """
+    DEBUG = False
+    
 
 configuration = {
-    "development": Development,
-    "production": Production,
-    "testing": Testing
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig
 }
+  
