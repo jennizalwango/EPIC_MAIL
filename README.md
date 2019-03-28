@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/jennizalwango/EPIC_MAIL.svg?branch=challenge3)](https://travis-ci.org/jennizalwango/EPIC_MAIL)
+[![Build Status](https://travis-ci.org/jennizalwango/EPIC_MAIL.svg?branch=challenge3)](https://travis-ci.org/jennizalwango/EPIC_MAIL)  [![Coverage Status](https://coveralls.io/repos/github/jennizalwango/EPIC_MAIL/badge.svg?branch=challenge3)](https://coveralls.io/github/jennizalwango/EPIC_MAIL?branch=challenge3) [![Maintainability](https://api.codeclimate.com/v1/badges/7375c492ed31fcf0768e/maintainability)](https://codeclimate.com/github/jennizalwango/EPIC_MAIL/maintainability)
+
 
 ## project name 
   Epic Mail
