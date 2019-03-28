@@ -62,6 +62,17 @@ class User:
         user = cur.fetchone()
         return user
 
+    @staticmethod
+    def check_if_admin(user_id):
+        cur = conn.cursor()
+        sql1 = """
+             SELECT isAdmin FROM users WHERE user_id=%s
+        """
+        cur.execute(sql1,(user_id,))
+        user = cur.fetchone()
+        status = user[0]
+        return status
+
     #This method is for generating a token
     @staticmethod
     def encode_auth_token(user_id):
