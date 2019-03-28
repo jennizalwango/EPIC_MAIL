@@ -14,6 +14,7 @@ class DevelopmentConfig(BaseConfig):
     Development application configuration
     """
     DEBUG = True
+    
    
 class TestingConfig(BaseConfig):
     """
@@ -21,6 +22,7 @@ class TestingConfig(BaseConfig):
     """
     DEBUG = True
     TESTING = True
+    DATABASE_NAME = 'testdb'
    
     
 
@@ -30,4 +32,10 @@ class ProductionConfig(BaseConfig):
     Production application configuration
     """
     DEBUG = False
+
+configuration = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig
+}
   
