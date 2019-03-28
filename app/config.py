@@ -32,6 +32,7 @@ class ProductionConfig(BaseConfig):
     Production application configuration
     """
     DEBUG = False
+    
 
 configuration = {
     "development": DevelopmentConfig,

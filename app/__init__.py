@@ -10,7 +10,20 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 bcrypt = Bcrypt(app)
 
-conn = psycopg2.connect(database = "epicmail",user="postgres", password="postgres",host="localhost",port=5432)
+
+conn = None
+
+
+if os.environ.get("APP_ENV") == "development":
+  conn = psycopg2.connect(database = "epicmail",user="postgres", password="postgres",host="localhost",port=5432)
+
+if os.environ.get("APP_ENV") == "production":
+  DATABASE_URL = os.environ.get("DATABASE_URL")
+  conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+
+if os.environ.get("APP_ENV") == "testing":
+  conn = psycopg2.connect(database = "testdb",user="postgres", password="postgres",host="localhost",port=5432)
+
 
 
 from app.routes.user_routes import UserUrl
