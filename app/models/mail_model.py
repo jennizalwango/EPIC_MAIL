@@ -12,7 +12,9 @@ class Message:
     Table schema
     """
     #lets create a mails table if it doesnt exist
-    cur.execute('''CREATE TABLE IF NOT EXISTS messages
+    @staticmethod
+    def create_message_table():
+        cur.execute('''CREATE TABLE IF NOT EXISTS messages
             ( id SERIAL PRIMARY KEY    NOT NULL,
             senderId       INTEGER     NOT NULL,
             receiverId     INTEGER     NOT NULL,
@@ -21,7 +23,7 @@ class Message:
             parentMessageId     INTEGER     NOT NULL,   
             status VARCHAR(100)  DEFAULT 'sent',        
             createdOn     DATE     NOT NULL );''')
-    
+
 
     #this constructor is called each time we create a new user
     def __init__(self, senderId, receiverEmail, subject, message, parentMessageId):

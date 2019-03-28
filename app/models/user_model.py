@@ -12,14 +12,16 @@ class User:
     Table schema
     """
     #lets create a users table if it doesnt exist
-    cur.execute('''CREATE TABLE IF NOT EXISTS users
-            ( user_id SERIAL PRIMARY KEY    NOT NULL,
-            firstname         VARCHAR(255)     NOT NULL,
-            lastname          VARCHAR(255)     NOT NULL,
-            email             VARCHAR(255)     NOT NULL,
-            password          VARCHAR(255)     NOT NULL,
-            isAdmin           VARCHAR(255)     NOT NULL,           
-            registered_on     DATE     NOT NULL );''')
+    @staticmethod
+    def create_user_table():
+        cur.execute('''CREATE TABLE IF NOT EXISTS users
+                ( user_id SERIAL PRIMARY KEY    NOT NULL,
+                firstname         VARCHAR(255)     NOT NULL,
+                lastname          VARCHAR(255)     NOT NULL,
+                email             VARCHAR(255)     NOT NULL,
+                password          VARCHAR(255)     NOT NULL,
+                isAdmin           VARCHAR(255)     NOT NULL,           
+                registered_on     DATE     NOT NULL );''')
 
     #this constructor is called each time we create a new user
     def __init__(self, firstname, lastname, email, password, isAdmin):
@@ -123,6 +125,12 @@ class User:
              return 'Signature expired, Please sign in again'
         except jwt.InvalidTokenError:
              return 'Invalid key. Please sign in again'
+    
+    @staticmethod
+    def drop_tables():
+        query = "DROP TABLE IF EXISTS users, groups, messages"
+        cur.execute(query)
+
 
 
 class BlackListToken:
@@ -168,3 +176,5 @@ class BlackListToken:
         if response:
             return True
         return False
+
+    
