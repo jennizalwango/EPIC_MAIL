@@ -251,11 +251,3 @@ class GroupMails(MethodView):
         return jsonify({'status':400, 'message':'wrong message format'})
     return jsonify({"status":400, "error":"Content-type must be json"}),400
       
-
-
-      
-
-
-      
-
-

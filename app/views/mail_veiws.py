@@ -30,8 +30,8 @@ class MessageViews(MethodView):
                         f = """SELECT currval(pg_get_serial_sequence(%s,%s))"""
                         cur.execute(f,('messages', 'id'))
                         latest_id = cur.fetchone()
-                        return jsonify({'status':'success','data':[{'id':latest_id[0], 'createdOn':createdOn,'subject':subject,'message':message,'parentMessageId':current_user,'status':'sent'}]})
-                        return jsonify({'status':'success','message':'Message sent successfully'})
+                        return jsonify({'status':200, 'data':[{'id':latest_id[0], 'createdOn':createdOn,'subject':subject,'message':message,'parentMessageId':current_user,'status':'sent'}]})
+                        return jsonify({'status':200, 'message':'Message sent successfully'})
                     return jsonify({'status':400, 'message':'Invalid email'})
                 return jsonify({'status':400, 'message':'subject or message must be strings'})
             return jsonify({'status':400, 'message':'wrong message format'})
@@ -136,14 +136,3 @@ class MessageViews(MethodView):
             cur.execute(sql,(message_id,))
             return jsonify({'status':200, 'data':[{'message':'Message deleted successfully'}]})
         return jsonify({'status':200, 'error':'No message found'})
-
-    
-        
-        
-
-            
-
-
-
-
-

@@ -21,6 +21,7 @@ class TestingConfig(BaseConfig):
     """
     DEBUG = True
     TESTING = True
+    DATABASE_NAME = "testdb"
    
     
 

@@ -72,3 +72,4 @@ class LoginUser(MethodView):
                 return jsonify({"status":401, "error":"User does not exist or password is incorrect"}), 401
             return jsonify({"status":400, "error":"Missing or wrong email format or password is less than five characters"}), 401
         return jsonify({"status":400, "error":"Content-type must be json"}), 400
+        
