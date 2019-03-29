@@ -17,13 +17,13 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.register_user('Kisuule','James','abc@gmail.com', '123456', True)
+            response = self.register_user('jenny','zalwango','abc@gmail.com', '123456', True)
             data = json.loads(response.data.decode())
             if data['status'] == 201:
                 self.assertTrue(response.content_type == 'application/json')
                 self.assertEqual(response.status_code, 201)
             else:
-                response = self.register_user('Kisuule','James',email_generator()+'@gmail.com', '123456', True)
+                response = self.register_user('jenny','zalwango',email_generator()+'@gmail.com', '123456', True)
                 data = json.loads(response.data.decode())
                 self.assertTrue(data['status'] == 201)
                 self.assertTrue(response.content_type == 'application/json')
@@ -35,7 +35,7 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.register_user_with_wrong_request_content_type('Kisuule','james','abc@gmail.com', '123456', True)
+            response = self.register_user_with_wrong_request_content_type('jenny','zalwango','abc@gmail.com', '123456', True)
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 400)
             self.assertTrue(data['error'] == 'Content-type must be json')
@@ -59,7 +59,7 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.register_user("james", "Kisuule", "", "", "true")
+            response = self.register_user("jenny", "zalwango", "", "", "true")
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 400)
             # assert data['error'] == 'Missing or wrong email format or password is less than five characters'
@@ -71,14 +71,14 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.register_user("james", "Kisuule","john", "123456","true")
+            response = self.register_user("jenny", "zalwango","joan", "123456","true")
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 400)
             self.assertTrue(data['error'] == "Missing or wrong email format or password is less than five characters")
 
     def test_user_password_length_is_greater_than_four_characters(self):
         with self.client:
-            response = self.register_user("james", "Kisuule","john@gmail.com", "123", "true")
+            response = self.register_user("jenny", "zalwango","joan@gmail.com", "123", "true")
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 400)
             self.assertTrue(data['error'] == "Missing or wrong email format or password is less than five characters")
@@ -88,11 +88,11 @@ class TestAuthBluePrint(BaseTestCase):
         Test that the user already exists.
         :return:
         """
-        user = User('Kisuule','James','example@gmail.com', '123456', 'true')
+        user = User('jenny','zalwango','example@gmail.com', '123456', 'true')
         user.save()
 
         with self.client:
-            response = self.register_user('Kisuule','James','example@gmail.com', '123456', 'true')
+            response = self.register_user('jenny','zalwango','example@gmail.com', '123456', 'true')
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 400)
             self.assertTrue(data['error'] == 'Failed, User already exists, Please sign In')
@@ -113,7 +113,7 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.login_user('johngmail.com', '123456')
+            response = self.login_user('joangmail.com', '123456')
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 401)
             self.assertTrue(response.content_type == 'application/json')
@@ -126,7 +126,7 @@ class TestAuthBluePrint(BaseTestCase):
         :return:
         """
         with self.client:
-            response = self.login_user('john123@gmail.com', '123456')
+            response = self.login_user('joan123@gmail.com', '123456')
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 401)
     
@@ -149,7 +149,7 @@ class TestAuthBluePrint(BaseTestCase):
         :return: Json login response
         """
         email1 =email_generator()+'@gmail.com' 
-        reg_response = self.register_user('Kisuule','James',email1, '123456', True)
+        reg_response = self.register_user('jenny','zalwango',email1, '123456', True)
         data = json.loads(reg_response.data.decode())
         self.assertTrue(data['status'] == 201)
         self.assertTrue(reg_response.content_type == 'application/json')
@@ -166,8 +166,4 @@ class TestAuthBluePrint(BaseTestCase):
         self.assertTrue(login_data['status'] == 200)
         self.assertTrue(login_response.content_type == 'application/json')
         return login_data
-
-    
-  
-
     

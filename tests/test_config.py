@@ -45,6 +45,5 @@ class TestTestingConfig(TestCase):
         self.assertFalse(current_app is None)
     
 
-
 if __name__ == '__main__':
     unittest.main()
