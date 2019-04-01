@@ -8,5 +8,7 @@ class UserUrl:
     login_view = LoginUser.as_view('login')
 
     # Add rules for the api Endpoints
-    app.add_url_rule('/api/v2/auth/signup', view_func=registration_view, methods=['POST', ])
-    app.add_url_rule('/api/v2/auth/login', view_func=login_view, methods=['POST', ])
+    app.add_url_rule('/api/v2/auth/signup', view_func=registration_view, 
+    methods=['POST', ])
+    app.add_url_rule('/api/v2/auth/login', view_func=login_view, 
+    methods=['POST', ])

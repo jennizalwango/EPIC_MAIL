@@ -16,34 +16,56 @@ class RegisterUser(MethodView):
         :return: Json Response with the user`s token
         """
         if request.content_type == 'application/json':
-            if 'firstname' in request.json and 'lastname' in request.json and 'email' in request.json and 'password' in request.json and 'isAdmin' in request.json:
+            if 'first_name' in request.json and 'last_name'\
+                    in request.json and 'email' \
+                    in request.json and 'password' \
+                    in request.json and 'isAdmin' in request.json:
                 post_data = request.get_json()
-                firstname = post_data.get('firstname')
-                lastname = post_data.get('lastname')
+                first_name = post_data.get('first_name')
+                last_name = post_data.get('last_name')
                 email = post_data.get('email')
                 password = post_data.get('password')
                 isAdmin = post_data.get('isAdmin')
 
-                if isinstance(firstname, str) and isinstance(lastname, str):
+                if isinstance(first_name, str) and isinstance(last_name, str):
                     if re.match(r"[^@]+@[^@]+\.[^@]+", email) and len(password) > 5:
                         user = User.get_by_email(email)
                         if not user:
-                            User(firstname = firstname, lastname = lastname, email = email, password = password, isAdmin= isAdmin).save()
+                            User(first_name=first_name, last_name=last_name,
+                                 email=email, password=password).save()
                             cur = conn.cursor()
                             sql1 = """
-                                SELECT row_to_json(users) FROM users WHERE email=%s
+                                SELECT row_to_json(users) FROM users \
+                                    WHERE email=%s
                             """
-                            cur.execute(sql1,(email,))
+                            cur.execute(sql1, (email,))
                             user = cur.fetchone()
                             return jsonify({
-                                            'status': 201,
-                                            'data': [{"token": User.encode_auth_token(email).decode('utf-8'), "user": user[0] }]
-                                        }), 201
-                        return jsonify({"status":400, "error":"Failed, User already exists, Please sign In"}), 400
-                    return jsonify({"status":400, "error": "Missing or wrong email format or password is less than five characters"}),400
-                return jsonify({"status":400, "error": "Firstname or Lastname should be a string"}),400
-            return jsonify({"status":400, "error":"Firstname or Lastname or Email or password is missing"}),400
-        return jsonify({"status":400, "error":"Content-type must be json"}),400
+                                'status': 201,
+                                'data': [{
+                                    "token": User.encode_auth_token(email)
+                                    .decode('utf-8'), "user": user[0]
+                                }]
+                            }), 201
+                        return jsonify({
+                            "status": 400,
+                            "error": "Failed, User already exists,\
+                                 Please sign In"}), 400
+                    return jsonify({
+                        "status": 400,
+                        "error": "Missing or wrong email format or password is less than five characters"}), 400
+                return jsonify({
+                    "status": 400,
+                    "error": "Firstname or Lastname should be a string"
+                }), 400
+            return jsonify({
+                "status": 400,
+                "error": "Firstname or Lastname or Email\
+                     or password is missing"}), 400
+        return jsonify({
+            "status": 400,
+            "error": "Content-type must be json"
+        }), 400
 
 
 class LoginUser(MethodView):
@@ -56,20 +78,31 @@ class LoginUser(MethodView):
             post_data = request.get_json()
             email = post_data.get('email')
             password = post_data.get('password')
-        
-            if re.match(r"[^@]+@[^@]+\.[^@]+", email) and len(password ) > 5:
+
+            if re.match(r"[^@]+@[^@]+\.[^@]+", email) and len(password) > 5:
                 cur = conn.cursor()
                 sql1 = """
                     SELECT row_to_json(users) FROM users WHERE email=%s
                 """
-                cur.execute(sql1,(email,))
+                cur.execute(sql1, (email,))
                 user = cur.fetchone()
-                if user and bcrypt.check_password_hash(user[0]['password'], password):
+                if user and bcrypt.check_password_hash(user[0]['password'],
+                                                       password):
                     return jsonify({
-                                            'status': 200,
-                                            'data': [{"token": User.encode_auth_token(user[0]['user_id']).decode('utf-8'), "user": user[0] }]
-                                        }), 200
-                return jsonify({"status":401, "error":"User does not exist or password is incorrect"}), 401
-            return jsonify({"status":400, "error":"Missing or wrong email format or password is less than five characters"}), 401
-        return jsonify({"status":400, "error":"Content-type must be json"}), 400
-        
+                        'status': 200,
+                        'data': [{
+                            "token": User.encode_auth_token(user[0]['user_id']).decode('utf-8'),
+                            "user": user[0]}]
+                    }), 200
+                return jsonify({
+                    "status": 401,
+                    "error": "User does not exist or password is incorrect"
+                }), 401
+            return jsonify({
+                "status": 400,
+                "error": "Missing or wrong email format or\
+                     password is less than five characters"}), 401
+        return jsonify({
+            "status": 400,
+            "error": "Content-type must be json"
+        }), 400

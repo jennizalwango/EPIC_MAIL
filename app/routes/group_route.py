@@ -16,5 +16,3 @@ class GroupUrl:
     app.add_url_rule("/api/v2/groups/<group_id>/users", view_func=group_view, methods=["POST"])
     app.add_url_rule("/api/v2/groups/<group_id>/messages", view_func=group_mails_view, methods=["POST"])
     app.add_url_rule("/api/v2/groups/<group_id>/users/<user_id>", view_func=group_view, methods=["DELETE"])
-
-  
