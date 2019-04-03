@@ -32,7 +32,7 @@ class RegisterUser(MethodView):
                         user = User.get_by_email(email)
                         if not user:
                             User(first_name=first_name, last_name=last_name,
-                                 email=email, password=password).save()
+                                 email=email, password=password, isAdmin=isAdmin).save()
                             cur = conn.cursor()
                             sql1 = """
                                 SELECT row_to_json(users) FROM users \

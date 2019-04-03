@@ -8,7 +8,7 @@ class Group:
     """
     Table schema
     """
-    # lets create a users table if it doesnt exist
+    # lets create a group table if it doesnt exist
     cur.execute('''CREATE TABLE IF NOT EXISTS groups
             ( Group_id SERIAL PRIMARY KEY    NOT NULL,
             groupname         VARCHAR(25)     NOT NULL,
@@ -50,8 +50,8 @@ class Group:
         """
         cur = conn.cursor()
         sql = """
-            INSERT INTO groups (group_name, group_role, \
-                group_owner, registered_on) 
+            INSERT INTO groups (groupname, grouprole, \
+                groupowner, registered_on) 
                     VALUES (%s, %s, %s, %s)
         """
         cur.execute(sql, (self.group_name, self.group_role,
@@ -67,7 +67,7 @@ class Group:
         """
         cur = conn.cursor()
         sql1 = """
-             SELECT * FROM groups WHERE group_name=%s
+             SELECT * FROM groups WHERE groupname=%s
         """
         cur.execute(sql1, (group_name,))
         group = cur.fetchone()

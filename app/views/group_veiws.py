@@ -48,8 +48,8 @@ class CreateGroup(MethodView):
                             'status': 201,
                             'data': [{
                                 "id": group_details[0]['group_id'],
-                                'name':group_details[0]['group_name'],
-                                'role':group_details[0]['group_role']
+                                'name':group_details[0]['groupname'],
+                                'role':group_details[0]['grouprole']
                             }]
                         }), 201
                     return jsonify({
@@ -112,7 +112,7 @@ class CreateGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights to \
+                "message": "You don't have admin rights to\
                     execute this resource"})
 
         try:
@@ -148,12 +148,12 @@ class CreateGroup(MethodView):
 
     @token_required
     def put(current_user, self, group_id):
-       # check if user is an admin
+        #check if user is an admin
         status = User.check_if_admin(current_user)
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights \
+                "message": "You don't have admin rights\
                     to execute this resource"
             })
 
@@ -211,7 +211,7 @@ class UserGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights to \
+                "message": "You don't have admin rights to\
                     execute this resource"
             })
 

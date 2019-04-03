@@ -5,6 +5,7 @@ from flask.views import MethodView
 from app.models.mail_model import Message
 from app import conn
 from app.views.helper import token_required
+from app.models.user_model import User
 
 
 class MessageViews(MethodView):
@@ -27,7 +28,7 @@ class MessageViews(MethodView):
                         if not verify_email:
                             return jsonify({
                                 "status": 400,
-                                "error": "User with this email does not exist"
+                                "data": "User with this email does not exist"
                             }), 400
                         createdOn = str(datetime.datetime.now())
                         Message(receiverEmail=receiverEmail,
@@ -80,9 +81,13 @@ class MessageViews(MethodView):
 
             if messages:
                 Message_details = []
-
+               
                 for mail in messages:
+                    sender_email = User.get_user_email(mail[1])
+                    receiver_email = User.get_user_email(mail[2])
                     record = {'id': mail[0],
+                              'sender_mail':sender_email,
+                              'receiver_mail':receiver_email,
                               'createdOn': mail[7],
                               'subject': mail[3],
                               'message': mail[4],
@@ -93,7 +98,7 @@ class MessageViews(MethodView):
                 return jsonify({'status': 200, 'data': Message_details})
             return jsonify({
                 'status': 200,
-                'error': 'No receieved messages found'
+                'data': 'No receieved messages found'
             })
 
         # get all sent or unread or received mails
@@ -120,7 +125,9 @@ class MessageViews(MethodView):
                 Message_details = []
 
                 for mail in messages:
+                    receiver_email = User.get_user_email(mail[2])
                     record = {'id': mail[0],
+                              'receiver_mail': receiver_email,
                               'createdOn': mail[7],
                               'subject': mail[3],
                               'message': mail[4],
@@ -132,7 +139,7 @@ class MessageViews(MethodView):
                 return jsonify({'status': 200, 'data': Message_details})
             return jsonify({
                 'status': 200,
-                'error': 'No '+data+' messages found'})
+                'data': 'No '+data+' messages found'})
 
         try:
             message_id = int(data)
@@ -154,7 +161,7 @@ class MessageViews(MethodView):
                 'data': messages})
         return jsonify({
             'status': 200,
-            'error': 'No messages found'})
+            'data': 'No messages found'})
 
     @token_required
     def delete(current_user, self, data):
@@ -184,5 +191,5 @@ class MessageViews(MethodView):
                 }]})
         return jsonify({
             'status': 200,
-            'error': 'No message found'
+            'data': 'No message found'
         })

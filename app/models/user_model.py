@@ -15,11 +15,11 @@ class User:
     # lets create a users table if it doesnt exist
     cur.execute('''CREATE TABLE IF NOT EXISTS users
             ( user_id SERIAL PRIMARY KEY    NOT NULL,
-            firstname         VARCHAR(25)     NOT NULL,
-            lastname          VARCHAR(25)     NOT NULL,
-            email             VARCHAR(25)     NOT NULL,
-            password          VARCHAR(25)     NOT NULL,
-            isAdmin           VARCHAR(25)     NOT NULL,           
+            firstname         VARCHAR(225)     NOT NULL,
+            lastname          VARCHAR(255)     NOT NULL,
+            email             VARCHAR(225)     NOT NULL,
+            password          VARCHAR(225)     NOT NULL,
+            isAdmin           VARCHAR(225)     NOT NULL,           
             registered_on     DATE     NOT NULL );''')
 
     # this constructor is called each time we create a new user
@@ -66,6 +66,23 @@ class User:
         cur.execute(sql1, (user_email,))
         user = cur.fetchone()
         return user
+       
+        
+    @staticmethod
+    def get_user_email(user_id):
+        """
+        Filter a user by email.
+        :param user_id:
+        :return: user or None
+        """
+        cur = conn.cursor()
+        sql1 = """
+            SELECT email FROM users WHERE user_id=%s
+        """
+        cur.execute(sql1, (user_id,))
+        user = cur.fetchone()
+        user_email = user[0]
+        return user_email
 
     @staticmethod
     def check_if_admin(user_id):
@@ -86,9 +103,9 @@ class User:
         :param user_id: User's Id
         :return:
         """
-        # the token will contatins the data we want to encrypt, 
+        # the token will contatins the data we want to encrypt
         # the expiration date,
-        # the key we're going to use to encrypt it, and 
+        # the key we're going to use to encrypt it and 
         # the method we're to use
 
         # sub refers to the data to be encrypted
