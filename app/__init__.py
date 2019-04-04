@@ -11,14 +11,11 @@ cors = CORS(app)
 app.config['SECRET_KEY'] = '12345678'
 bcrypt = Bcrypt(app)
 
-
-
 # conn = psycopg2.connect(os.environ.get('DATABASE_URL'))
 
 # conn = psycopg2.connect(database="epicmail", user="postgres", password="postgres", host="localhost", port=5432)
 
 conn = psycopg2.connect(database="d7oe093sstb9l5", user="jplzedaofwqxjg", password="da09959fb59f00f876743b021b00872a9a38fbd87346a712356e520ee438f1bc", host="ec2-54-221-243-211.compute-1.amazonaws.com", port=5432)
-
 
 
 from app.routes.user_routes import UserUrl
