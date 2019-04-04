@@ -83,6 +83,14 @@ class Group:
         return all_groups
 
     @staticmethod
+    def get_group_names():
+        cur = conn.cursor()
+        query = "SELECT row_to_json(groups) FROM groups"
+        cur.execute(query)
+        all_groups = cur.fetchall()
+        return all_groups
+
+    @staticmethod
     def get_group_type(group_id):
         cur = conn.cursor()
         query = "SELECT group_owner FROM groups WHERE\
@@ -95,7 +103,7 @@ class Group:
     @staticmethod
     def check_group_id(group_id):
         cur = conn.cursor()
-        query = "SELECT row_to_json(groups) FROM groups WHERE \
+        query = "SELECT row_to_json(groups) FROM groups WHERE\
             group_id = '{}';".format(
             group_id)
         cur.execute(query)

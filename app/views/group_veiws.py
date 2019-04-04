@@ -262,6 +262,21 @@ class UserGroup(MethodView):
             'status': 200,
             'error': 'No group found'})
 
+    # get all groups
+    @token_required
+    def get(current_user, self):
+
+        groups = Group.get_group_names()
+        if not groups:
+            return jsonify({
+                'status': 200,
+                'data': 'No group found'
+            })
+        return jsonify({
+            "status": 200,
+            "data": groups[0]
+        }), 200
+
     @token_required
     def delete(current_user, self, group_id, user_id):
         # check if user is an admin

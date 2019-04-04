@@ -11,6 +11,7 @@ class GroupUrl:
     # Add rules for the api Endpoints
     app.add_url_rule('/api/v2/groups', view_func=create_view, methods=['POST'])
     app.add_url_rule("/api/v2/groups", view_func=create_view, defaults={"group_id": None}, methods=["GET"])
+    app.add_url_rule("/api/v2/groupnames", view_func=group_view, methods=["GET"])
     app.add_url_rule("/api/v2/groups/<group_id>/name", view_func=create_view, methods=["GET", "PUT"])
     app.add_url_rule("/api/v2/groups/<group_id>", view_func=create_view, methods=["DELETE"])
     app.add_url_rule("/api/v2/groups/<group_id>/users", view_func=group_view, methods=["POST"])
