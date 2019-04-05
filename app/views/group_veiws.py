@@ -112,8 +112,7 @@ class CreateGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights to\
-                    execute this resource"})
+                "message": "You don't have admin rights to execute this resource"})
 
         try:
             groupId = int(group_id)
@@ -153,8 +152,7 @@ class CreateGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights\
-                    to execute this resource"
+                "message": "You don't have admin rights to execute this resource"
             })
 
         try:
@@ -198,7 +196,7 @@ class CreateGroup(MethodView):
                             }]
                             })
         return jsonify({
-            'status': 200,
+            'status': 404,
             'error': 'No group found'
         })
 
@@ -211,8 +209,7 @@ class UserGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights to\
-                    execute this resource"
+                "message": "You don't have admin rights to execute this resource"
             })
 
         if 'userId' not in request.json or 'userRole' not in request.json:
@@ -221,8 +218,7 @@ class UserGroup(MethodView):
                 "message": "Missing UserId or userRole"})
 
         posted_data = request.get_json()
-        if not isinstance(posted_data['userId'], int) \
-                or not isinstance(posted_data['userRole'], str):
+        if not isinstance(posted_data['userId'], int) or not isinstance(posted_data['userRole'], str):
             return jsonify({
                 "status": 400,
                 "message": "Incorrect userId or userRole format"})
@@ -249,6 +245,8 @@ class UserGroup(MethodView):
             cur.execute(sql, (groupId, posted_data['userId'],
                               posted_data['userRole'], str(
                 datetime.datetime.now()),))
+            
+            conn.commit()
 
             get_group_users = """
                                 SELECT row_to_json(group_users) 
@@ -291,8 +289,7 @@ class UserGroup(MethodView):
         if not status == "true":
             return jsonify({
                 "status": 401,
-                "message": "You don't have admin rights \
-                    to execute this resource"})
+                "message": "You don't have admin rights to execute this resource"})
 
         try:
             groupId = int(group_id)
@@ -328,7 +325,7 @@ class UserGroup(MethodView):
                 }]
             })
         return jsonify({
-            'status': 200,
+            'status': 404,
             'error': 'No group or user found'
         })
 
