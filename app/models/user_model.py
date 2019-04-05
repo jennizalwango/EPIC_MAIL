@@ -95,6 +95,14 @@ class User:
         status = user[0]
         return status
 
+    @staticmethod
+    def get_users_names(user_id):
+        cur = conn.cursor()
+        query = "SELECT * FROM users WHERE NOT user_id=%s"
+        cur.execute(query, (user_id,))
+        all_users = cur.fetchall()
+        return all_users
+
     # This method is for generating a token
     @staticmethod
     def encode_auth_token(user_id):

@@ -12,3 +12,5 @@ class UserUrl:
     methods=['POST', ])
     app.add_url_rule('/api/v2/auth/login', view_func=login_view, 
     methods=['POST', ])
+    app.add_url_rule('/api/v2/users', view_func=login_view, 
+    methods=['GET', ])

@@ -85,7 +85,7 @@ class Group:
     @staticmethod
     def get_group_names():
         cur = conn.cursor()
-        query = "SELECT row_to_json(groups) FROM groups"
+        query = "SELECT * FROM groups"
         cur.execute(query)
         all_groups = cur.fetchall()
         return all_groups

@@ -3,6 +3,7 @@ from flask import request, jsonify, make_response
 from flask.views import MethodView
 from app import bcrypt, conn
 from app.models.user_model import User
+from app.views.helper import token_required
 
 
 class RegisterUser(MethodView):
@@ -106,3 +107,25 @@ class LoginUser(MethodView):
             "status": 400,
             "error": "Content-type must be json"
         }), 400
+
+    # get all groups
+    @token_required
+    def get(current_user, self):
+
+        users = User.get_users_names(current_user)
+        if not users:
+            return jsonify({
+                'status': 200,
+                'data': 'No user found'
+            })
+        users_list = []
+        for user in users:
+            grp = {
+                 'id': user[0],
+                 'name': user[1]+' '+user[2]
+            }
+            users_list.append(grp)
+        return jsonify({
+            "status": 200,
+            "data": users_list
+        }), 200

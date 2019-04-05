@@ -242,7 +242,7 @@ class UserGroup(MethodView):
         groups = cur.fetchone()
         if groups:
             sql = """
-            INSERT INTO group_users(group_id, userId, userRole, /
+            INSERT INTO group_users(group_id, userId, userRole, 
             registered_on) VALUES(%s,%s,%s,%s)
         """
             cur = conn.cursor()
@@ -251,13 +251,13 @@ class UserGroup(MethodView):
                 datetime.datetime.now()),))
 
             get_group_users = """
-                                SELECT row_to_json(group_users) \
+                                SELECT row_to_json(group_users) 
                                     FROM group_users WHERE group_id=%s
                             """
             cur = conn.cursor()
             cur.execute(get_group_users, (groupId,))
             group_users = cur.fetchall()
-            return jsonify({'status': 200, 'data': group_users})
+            return jsonify({'status': 201, 'data': group_users})
         return jsonify({
             'status': 200,
             'error': 'No group found'})
@@ -272,9 +272,16 @@ class UserGroup(MethodView):
                 'status': 200,
                 'data': 'No group found'
             })
+        groups_list = []
+        for group in groups:
+            grp = {
+                 'id': group[0],
+                 'name': group[1]
+            }
+            groups_list.append(grp)
         return jsonify({
             "status": 200,
-            "data": groups[0]
+            "data": groups_list
         }), 200
 
     @token_required
